@@ -16,6 +16,7 @@
 
 body {
     font-family: "Poppins", sans-serif;
+    font-weight: 300;
 }
 
 header {
@@ -81,28 +82,34 @@ nav ul li a:hover {
 h1 {
     font-size: 36px;
     text-align: center;
+    font-weight: 700;
 }
 
 h2 {
     font-size: 32px;
     text-align: center;
+    font-weight: 700;
 }
 
 h3 {
     font-size: 28px;
     text-align: center;
+    font-weight: 500;
 }
 
 h4 {
     font-size: 24px;
+    font-weight: 500;
 }
 
 h5 {
     font-size: 20px;
+    font-weight: 500;
 }
 
 h6 {
     font-size: 16px;
+    font-weight: 300;
 }
 
 /* p {
@@ -112,7 +119,7 @@ h6 {
 footer {
     background: var(--blk);
     color: var(--wht);
-    padding: 20px;
+    padding: 40px 20px;
     display: flex;
     flex-flow: column-reverse;
     align-items: center;
@@ -162,7 +169,7 @@ footer {
     }
 
     footer {
-        padding: 20px 80px;
+        padding: 40px 80px;
         flex-flow: row;
         justify-content: space-between;
     }

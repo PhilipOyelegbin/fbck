@@ -20,13 +20,13 @@
 }
 
 .container > h1 {
-    font-weight: bolder;
+    font-weight: 700;
     font-size: 30px;  
 }
   
 .container > h3 {
     font-size: 20px;
-    font-weight: bolder;
+    font-weight: 500;
 }
 
 .btn {
@@ -54,6 +54,10 @@
 .about > p {
     line-clamp: 5;
     -webkit-line-clamp: 5;
+}
+
+.about ul li {
+    list-style-position: inside;
 }
 
 .team {

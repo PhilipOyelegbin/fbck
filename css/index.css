@@ -20,13 +20,13 @@
 }
 
 .container > h1 {
-    font-weight: bolder;
-    font-size: 30px;  
+    font-size: 30px;
+    font-weight: 700;
 }
   
 .container > h3 {
     font-size: 20px;
-    font-weight: bolder;
+    font-weight: 500;
 }
 
 .btn {
@@ -93,11 +93,44 @@ figure > img {
     justify-content: center;
     align-items: center;
     height: 300px;
+    position: relative;
 }
 
 .glide__slide {
     width: 100%;
     aspect-ratio: 1;
+}
+
+.glide__arrow {
+    background: var(--blu);
+    border: none;
+    color: var(--wht);
+    font-weight: 700;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all ease-in-out 300ms;
+}
+
+.glide__arrow:hover {
+    color: var(--gry);
+}
+
+.glide__arrow--left {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.glide__arrow--right {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    z-index: 10;
 }
 
 
