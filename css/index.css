@@ -1,5 +1,5 @@
 .hero {
-    background: #353434 url("../images/hero-bg.jpg") no-repeat center;
+    background: #353434 url("../images/hero-bg1.jpg") no-repeat center;
     background-size: cover;
     background-blend-mode: overlay;
     background-attachment: fixed;
@@ -99,6 +99,7 @@ figure > img {
 .glide__slide {
     width: 100%;
     aspect-ratio: 1;
+    border-radius: 16px;
 }
 
 .glide__arrow {
