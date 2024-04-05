@@ -1,5 +1,5 @@
 .hero {
-    background: #353434 url("../images/hero-bg2.jpg") no-repeat center;
+    background: #353434 url("../images/hero-bg0.jpg") no-repeat center;
     background-size: cover;
     background-blend-mode: overlay;
     background-attachment: fixed;
@@ -92,13 +92,13 @@ figure > img {
     border-top-left-radius: 16px;
 }
 
-.glide {
+/* .glide {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 300px;
     position: relative;
-}
+} */
 
 .glide__slide {
     width: 100%;
@@ -110,9 +110,8 @@ figure > img {
     background: var(--blu);
     border: none;
     color: var(--wht);
-    font-weight: 700;
-    height: 32px;
-    width: 32px;
+    width: 24px;
+    aspect-ratio: 1;
     border-radius: 50%;
     cursor: pointer;
     transition: all ease-in-out 300ms;
