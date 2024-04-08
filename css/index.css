@@ -77,7 +77,12 @@
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
     text-align: center;
     border-radius: 16px;
-    margin-top: 16px
+    margin-top: 16px;
+    transition: transform 0.25s ease-in-out;
+}
+
+.service > div > figure:hover {
+    transform: scale(1.05);
 }
 
 figure > img {

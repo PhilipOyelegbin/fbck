@@ -17,11 +17,16 @@
     --gry: #808080;
     --blk: #1f1e1e;
     --blu: #0756a1;
+    --danger: #ff0000;
 }
 
 body {
     font-family: "Poppins", sans-serif;
     font-weight: 300;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE10+/Edge */
+    user-select: none;         /* Standard */
 }
 
 header {
@@ -47,7 +52,7 @@ nav {
     right: 100%;
     background: inherit;
     border-bottom-left-radius: 30px;
-    transition: all ease-in-out 300ms;
+    transition: all 300ms ease-in-out;
     z-index: 30;
 }
 
@@ -69,11 +74,11 @@ nav ul {
 nav ul li a {
     text-decoration: none;
     color: inherit;
+    transition: all 0.25s ease-in-out;
 }
 
 nav ul li a:hover {
     color: var(--gry);
-    transition: all ease-in-out 300ms;
 }
 
 .menu-btn {
@@ -117,9 +122,10 @@ h6 {
     font-weight: 300;
 }
 
-/* p {
-    font-size: 12px;
-} */
+#errorMsg {
+    color: var(--danger);
+    text-align: center;
+}
 
 footer {
     background: var(--blk);

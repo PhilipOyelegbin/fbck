@@ -47,20 +47,56 @@
     background: linear-gradient(45deg, rgb(21, 147, 250) 0%, rgb(21, 158, 250) 50%, rgb(7, 86, 161) 100%);
 }
 
-.about, .service, .gallery {
+.stories, .memories, .events {
     padding: 40px 20px;
 }
 
-.about > p {
-    line-clamp: 5;
-    -webkit-line-clamp: 5;
+.gallery-content img {
+    width: 80px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    margin: 5px;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: transform 0.25s ease;
 }
 
-.about ul li {
-    list-style-position: inside;
+.gallery-content img:hover {
+    transform: scale(1.05);
 }
 
-.service {
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+    margin: 10% auto;
+    display: block;
+    width: 80%;
+    aspect-ratio: 1;
+    max-width: 700px;
+    border-radius: 16px;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.memories {
     background: rgb(21, 147, 250);
     background: linear-gradient(45deg, rgb(21, 147, 250) 0%, rgb(21, 158, 250) 50%, rgb(7, 86, 161) 100%);
     border-top-left-radius: 60px;
@@ -68,37 +104,20 @@
     color: var(--wht);
 }
 
-.service > div {
+.memories > div {
     display: flex;
     justify-content: center;
     flex-flow: row wrap;
-    gap: 20px;
+    gap: 10px;
+    margin-top: 16px;
 }
 
-.service > div > figure {
-    background: var(--gry);
+.memories > div > iframe {
     width: 280px;
+    aspect-ratio: 2/1;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
-    text-align: center;
     border-radius: 16px;
-    margin-top: 16px
 }
-
-figure > img {
-    width: 100%;
-    aspect-ratio: 1;
-    object-fit: cover;
-    border-top-right-radius: 16px;
-    border-top-left-radius: 16px;
-}
-
-/* .glide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 300px;
-    position: relative;
-} */
 
 .glide__slide {
     width: 100%;
@@ -161,7 +180,11 @@ figure > img {
         font-size: 30px;
     }
 
-    .about, .service, .gallery {
+    .stories, .memories, .events {
         padding: 40px 80px;
+    }
+
+    .gallery-content img {
+        width: 100px;
     }
 }
