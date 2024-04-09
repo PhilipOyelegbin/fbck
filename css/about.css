@@ -143,8 +143,12 @@ figure > img {
     
     .contact > div {
         width: 50%;
-    }
+    }   
+}
 
+
+
+@media (min-width: 1024px) {
     .mobile-map {
         display: none;
     }
