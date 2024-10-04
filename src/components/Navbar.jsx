@@ -9,7 +9,7 @@ export default function Navbar() {
   const navigation = [
     { title: "Home", path: "/" },
     { title: "About", path: "/about" },
-    { title: "Our Services", path: "/service" },
+    // { title: "Our Services", path: "/services" },
     { title: "Contact", path: "/contact" },
   ];
 
@@ -17,14 +17,13 @@ export default function Navbar() {
     <nav className='bg-white w-full border-b md:border-0 md:static'>
       <div className='items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8'>
         <div className='flex items-center justify-between py-3 md:py-5 md:block'>
-          <a href='javascript:void(0)'>
-            <Image
-              src='https://www.floatui.com/logo.svg'
-              width={120}
-              height={50}
-              alt='FBCK Logo'
-            />
-          </a>
+          <Image
+            src='/images/logo.png'
+            width={300}
+            height={300}
+            className='object-fill w-10 aspect-square'
+            alt='FBCK Logo'
+          />
           <div className='md:hidden'>
             <button
               className='text-gray-700 outline-none p-2 rounded-md focus:border-gray-400 focus:border'
@@ -67,7 +66,9 @@ export default function Navbar() {
             {navigation.map((item, idx) => {
               return (
                 <li key={idx} className='text-gray-600 hover:text-indigo-600'>
-                  <Link href={item.path}>{item.title}</Link>
+                  <Link href={item.path} onClick={() => setState(!state)}>
+                    {item.title}
+                  </Link>
                 </li>
               );
             })}

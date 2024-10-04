@@ -1,7 +1,9 @@
+import DashStats from "./_components/DashStats";
+
 function DashboardPage() {
   return (
     <>
-      <h1>DashboardPage</h1>
+      <DashStats />
     </>
   );
 }

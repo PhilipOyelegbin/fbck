@@ -15,6 +15,12 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "floatui.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
         hostname: "res.cloudinary.com",
         port: "",
         pathname: "/**",
@@ -22,6 +28,12 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "fbckosofe.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
         port: "",
         pathname: "/**",
       },

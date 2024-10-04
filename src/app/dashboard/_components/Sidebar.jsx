@@ -1,14 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import {
-  FiActivity,
-  FiCodesandbox,
-  FiLogOut,
-  FiUser,
-  FiUsers,
-} from "react-icons/fi";
+import { FiCodesandbox, FiLogOut, FiUser, FiUsers } from "react-icons/fi";
 
-export default function Sidebar() {
+export default function Sidebar({ toggle, setToggle }) {
   const navigation = [
     {
       href: "/dashboard",
@@ -16,14 +10,9 @@ export default function Sidebar() {
       icon: <FiCodesandbox />,
     },
     {
-      href: "/dashboard/candidtate",
+      href: "/dashboard/candidates",
       name: "Candidates",
       icon: <FiUsers />,
-    },
-    {
-      href: "/dashboard/events",
-      name: "Events",
-      icon: <FiActivity />,
     },
     {
       href: "/dashboard/profile",
@@ -41,16 +30,18 @@ export default function Sidebar() {
   ];
 
   return (
-    <nav className='fixed top-0 left-0 w-20 h-full border-r bg-white space-y-8'>
-      <div className='flex flex-col h-full'>
-        <div className='h-20 flex items-center justify-center px-8'>
-          <Image
-            src='https://floatui.com/logo-letter.png'
-            width={35}
-            height={80}
-            className='mx-auto'
-          />
-        </div>
+    <aside
+      className={`${
+        toggle ? "left-0 absolute md:static" : "-left-full fixed"
+      } w-20 h-full md:h-screen duration-300 ease-linear bg-white z-30`}>
+      <div className='flex flex-col h-full p-5 space-y-5'>
+        <Image
+          src='/images/logo.png'
+          width={300}
+          height={300}
+          className='object-fill'
+          alt='FBCK logo'
+        />
 
         <div className='flex-1 flex flex-col h-full'>
           <ul className='px-4 text-sm font-medium flex-1'>
@@ -58,6 +49,7 @@ export default function Sidebar() {
               <li key={idx}>
                 <Link
                   href={item.href}
+                  onClick={() => setToggle(!toggle)}
                   className='relative flex items-center justify-center gap-x-2 text-gray-600 p-2 rounded-lg  hover:bg-gray-50 active:bg-gray-100 duration-150 group'>
                   <div className='text-gray-500 text-2xl'>{item.icon}</div>
                   <span className='absolute left-14 p-1 px-1.5 rounded-md whitespace-nowrap text-xs text-white bg-gray-800 hidden group-hover:inline-block group-focus:hidden duration-150'>
@@ -84,6 +76,6 @@ export default function Sidebar() {
           </ul>
         </div>
       </div>
-    </nav>
+    </aside>
   );
 }

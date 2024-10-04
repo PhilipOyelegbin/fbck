@@ -35,24 +35,23 @@ export default function Footer() {
     <footer className='text-gray-500 bg-white px-4 py-5 max-w-screen-xl mx-auto md:px-8'>
       <div className='max-w-lg sm:mx-auto sm:text-center'>
         <Image
-          src='https://www.floatui.com/logo.svg'
-          className='w-32 sm:mx-auto'
-          width={150}
-          height={50}
+          src='/images/logo.png'
+          className='w-20 object-fill aspect-square sm:mx-auto'
+          width={300}
+          height={300}
+          alt='Footer logo'
         />
         <p className='leading-relaxed mt-2 text-[15px]'>
-          Lorem Ipsum has been the industry's standard dummy text ever since the
+          {`Lorem Ipsum has been the industry's standard dummy text ever since the
           1500s, when an unknown printer took a galley of type and scrambled it
-          to make a type specimen book.
+          to make a type specimen book.`}
         </p>
       </div>
 
       <ul className='items-center justify-center mt-8 space-y-5 sm:flex sm:space-x-4 sm:space-y-0'>
         {footerNavs.map((item, idx) => (
-          <li className=' hover:text-gray-800'>
-            <Link key={idx} href={item.href}>
-              {item.name}
-            </Link>
+          <li className='hover:text-gray-800' key={idx}>
+            <Link href={item.href}>{item.name}</Link>
           </li>
         ))}
       </ul>
