@@ -1,7 +1,7 @@
-# FBC Kososfe Web Application
+# KodasHub Backend Application
 
 ## Overview
-A fullstack MERN application developed for a startup hosting service provider. The system features JWT authentication and authoriztaion, CRUD operations for cleints and admin, with a mailing system.
+An application developed for a startup hosting service provider. The system features JWT authentication and authoriztaion, CRUD operations for cleints and admin, with a mailing system.
 
 ## Features
 - Register as a client: Allow users to create an account
@@ -17,41 +17,33 @@ A fullstack MERN application developed for a startup hosting service provider. T
 - Delete invoice: Allow the admin to delete an invoice.
 
 ## Installation
-To install and set up the KodasHub App, follow these steps:
+To install and set up the KodasHub API, follow these steps:
 
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/PhilipOyelegbin/kodashub.git
    ```
 
-2. **Move into respective folder**:
+2. **Move into backend folder**:
    ```bash
    cd backend  # to move into the backend folder
-
-   cd frontend  # to move into the frontend folder
    ```
 3. **Install dependencies**:
    ```bash
    npm install  # to install the dependecies for backend project
-
-   yarn  # to install the dependecies for frontend project
    ```
 
 ## Usage
-After installation, you can use the following commands to manage your kodashub app:
+After installation, you can use the following commands to manage your kodashub api:
 
 - **Start the app**:
   ```javascript
   npm run start   // start the backend server
-
-  <!-- or -->
-
-   yarn dev // start the frontend app
   ```
 
 - _NB: Swagger-autogen was used for the backend swagegr ui (https://swagger-autogen.github.io/docs/)_
 
-- Click **[here](https://kodashub.netlify.app)** to access the live application
+- Click **[here](https://kodashub.onrender.com)** to access the live application
 
 ![preview](./preview.png)
 
