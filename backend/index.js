@@ -23,7 +23,7 @@ const corsOptions = {
     "http://127.0.0.1:5173",
     "http://localhost:5173",
     "https://fbck.com.ng",
-    "https://fbck.netlify.app",
+    "https://fbck.vercel.app",
   ],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
