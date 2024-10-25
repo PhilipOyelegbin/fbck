@@ -16,7 +16,7 @@ function AdminInvoicePage() {
       });
       if (response.ok) {
         toast.success("All vote deleted Successfully");
-        setData((prevData) => prevData.filter((item) => item.id !== id));
+        setData(!data);
       } else {
         toast.error(response.statusText);
       }
@@ -35,7 +35,7 @@ function AdminInvoicePage() {
         }
       );
       if (response.ok) {
-        toast.success("Deleted Successfully");
+        toast.success("Vote deleted Successfully");
         setData((prevData) => prevData.filter((item) => item.id !== id));
       } else {
         toast.error(response.statusText);
@@ -106,7 +106,7 @@ function AdminInvoicePage() {
                   <td className='py-1 px-2 border-b'>
                     <FaTrash
                       onClick={() => handleDeleteVoteById(item.id)}
-                      className='text-xl mx-auto text-red-500 hover:text-red-600 duration-300 ease-linear'
+                      className='cursor-pointer text-xl mx-auto text-red-500 hover:text-red-600 duration-300 ease-linear'
                     />
                   </td>
                 </tr>

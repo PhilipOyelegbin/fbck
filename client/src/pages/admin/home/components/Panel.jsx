@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { FaUser, FaUsers, FaVoteYea } from "react-icons/fa";
 import { getUser, getCandidate, getVote } from "../../components/action";
-import LineChart from "./LineChart";
+import BarChart from "./BarChart";
 
 function Panel() {
   const [users, setUsers] = useState(0);
@@ -87,7 +87,7 @@ function Panel() {
         </div>
       </div>
 
-      <LineChart />
+      <BarChart />
     </div>
   );
 }

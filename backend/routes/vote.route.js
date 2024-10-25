@@ -5,6 +5,7 @@ const {
   getVotes,
   getVoteById,
   deleteVoteById,
+  deleteVotes,
 } = require("../controller/vote.controller");
 const { prisma } = require("../utils/connect");
 
@@ -133,6 +134,24 @@ router.delete(
 
       await deleteVoteById(id);
       return res.status(200).json({ message: "Vote deleted successfully" });
+    } catch (error) {
+      return res.status(500).json({ error: error.message });
+    }
+  }
+);
+
+router.delete(
+  "/v1/api/vote",
+  // authenticated,
+  // authorized("ADMIN"),
+  async (req, res) => {
+    /*
+      #swagger.tags = ['Vote']
+      #swagger.security = [{"bearerAuth": []}]
+    */
+    try {
+      await deleteVotes();
+      return res.status(200).json({ message: "All vote deleted successfully" });
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }

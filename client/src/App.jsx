@@ -41,6 +41,8 @@ const UpdateCandidate = lazy(() =>
   import("./pages/admin/candidates/update/page")
 );
 const Vote = lazy(() => import("./pages/admin/votes/page"));
+const AdminProfile = lazy(() => import("./pages/admin/profile/page"));
+const CreateAdmin = lazy(() => import("./pages/admin/profile/new/page"));
 
 function App() {
   const router = createBrowserRouter(
@@ -65,19 +67,21 @@ function App() {
             <Route path='/dashboard/profile' element={<Profile />} />
           </Route>
         </Route>
-        {/* <Route element={<AdminProtectedRoutes />}> */}
-        <Route path='/panel' element={<AdminLayout />}>
-          <Route index element={<Panel />} />
-          <Route path='/panel/users' element={<User />} />
-          <Route path='/panel/users/update/:email' element={<UpdateUser />} />
-          <Route path='/panel/users/new' element={<CreateUser />} />
-          <Route path='/panel/candidates' element={<Candidate />} />
-          <Route
-            path='/panel/candidates/update/:id'
-            element={<UpdateCandidate />}
-          />
-          <Route path='/panel/votes' element={<Vote />} />
-          {/* </Route> */}
+        <Route element={<AdminProtectedRoutes />}>
+          <Route path='/panel' element={<AdminLayout />}>
+            <Route index element={<Panel />} />
+            <Route path='/panel/users' element={<User />} />
+            <Route path='/panel/users/update/:email' element={<UpdateUser />} />
+            <Route path='/panel/users/new' element={<CreateUser />} />
+            <Route path='/panel/candidates' element={<Candidate />} />
+            <Route
+              path='/panel/candidates/update/:id'
+              element={<UpdateCandidate />}
+            />
+            <Route path='/panel/votes' element={<Vote />} />
+            <Route path='/panel/profile' element={<AdminProfile />} />
+            <Route path='/panel/profile/new' element={<CreateAdmin />} />
+          </Route>
         </Route>
       </Route>
     )

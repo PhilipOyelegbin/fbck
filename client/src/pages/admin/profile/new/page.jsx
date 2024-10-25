@@ -1,15 +1,12 @@
-import { useState, useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useState } from "react";
 import { toast } from "react-toastify";
 
-export default function UpdateCandidate() {
-  const { id } = useParams();
-  const navigate = useNavigate();
+export default function CreateAdmin() {
   const [data, setData] = useState({
     name: "",
-    image_url: "",
-    gender: "",
-    description: "",
+    email: "",
+    phone_number: "",
+    password: "",
   });
 
   const handleChange = (e) => {
@@ -19,8 +16,8 @@ export default function UpdateCandidate() {
   const handleSave = (e) => {
     e.preventDefault();
     try {
-      fetch(`${import.meta.env.VITE_API_URI}/api/candidate/${id}`, {
-        method: "PATCH",
+      fetch(`${import.meta.env.VITE_API_URI}/api/admin`, {
+        method: "POST",
         body: JSON.stringify(data),
         headers: {
           "Content-Type": "application/json;charset=UTF-8",
@@ -29,7 +26,7 @@ export default function UpdateCandidate() {
       })
         .then((resp) => {
           if (resp.ok) {
-            navigate("/panel/candidates");
+            toast.success("New admin created");
           } else {
             toast.error(resp.statusText);
           }
@@ -40,27 +37,11 @@ export default function UpdateCandidate() {
     }
   };
 
-  useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URI}/api/candidate/${id}`, {
-      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-    })
-      .then((resp) => resp.json())
-      .then((result) =>
-        setData({
-          name: result?.data.name || "",
-          image_url: result?.data.image_url || "",
-          gender: result?.data.gender || "",
-          description: result?.data.description || "",
-        })
-      )
-      .catch((err) => toast.error(err));
-  }, [id]);
-
   return (
     <section className='p-5 bg-white rounded shadow-md'>
       <div className='flex-1'>
         <h2 className='text-3xl font-bold text-purple-600 mb-4'>
-          Update a candidate
+          Create a new admin
         </h2>
 
         <form onSubmit={handleSave}>
@@ -75,51 +56,40 @@ export default function UpdateCandidate() {
             />
           </label>
           <label className='block mb-2'>
-            <span className='text-gray-700'>Image URL</span>
+            <span className='text-gray-700'>Email</span>
             <input
-              type='url'
-              name='image_url'
-              value={data.image_url}
+              type='email'
+              name='email'
+              value={data.email}
               onChange={handleChange}
               className='w-full p-2 pl-10 text-sm text-gray-700 border border-gray-400 rounded-md outline-none'
             />
           </label>
           <label className='block mb-2'>
-            <span className='text-gray-700'>Gender</span>
-            <select
-              name='gender'
-              id='gender'
+            <span className='text-gray-700'>Phone number</span>
+            <input
+              type='text'
+              name='phone_number'
+              value={data.phone_number}
+              onChange={handleChange}
               className='w-full p-2 pl-10 text-sm text-gray-700 border border-gray-400 rounded-md outline-none'
-              value={data.gender}
-              onChange={handleChange}>
-              <option value=''>[SELECT GENDER]</option>
-              <option value='Male'>Male</option>
-              <option value='Female'>Female</option>
-              <option value='Others'>Others</option>
-            </select>
+            />
           </label>
           <label className='block mb-2'>
-            <span className='text-gray-700'>Description</span>
-            <textarea
-              name='description'
-              id='description'
-              cols='30'
-              rows='5'
+            <span className='text-gray-700'>Password</span>
+            <input
+              type='password'
+              name='password'
+              value={data.password}
+              onChange={handleChange}
               className='w-full p-2 pl-10 text-sm text-gray-700 border border-gray-400 rounded-md outline-none'
-              value={data.description}
-              onChange={handleChange}></textarea>
+            />
           </label>
 
           <div className='flex gap-5 items-center'>
             <button type='submit' className='btn max-w-fit'>
               Save
             </button>
-
-            <Link
-              to='/panel/candidates'
-              className='bg-slate-500 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded-md'>
-              Cancel
-            </Link>
           </div>
         </form>
       </div>

@@ -20,6 +20,7 @@ async function generateToken(user) {
 
 async function authenticate(email, password) {
   const user = await prisma.user.findUnique({ where: { email } });
+
   if (!user) {
     throw new Error("Invalid email or password");
   }
@@ -30,8 +31,22 @@ async function authenticate(email, password) {
   return generateToken(user);
 }
 
+async function adminAuthenticate(email, password) {
+  const admin = await prisma.admin.findUnique({ where: { email } });
+
+  if (!admin) {
+    throw new Error("Invalid email or password");
+  }
+  const isValid = await verifyPassword(password, admin.password);
+  if (!isValid) {
+    throw new Error("Invalid email or password");
+  }
+  return generateToken(admin);
+}
+
 module.exports = {
   hashPassword,
   verifyPassword,
   authenticate,
+  adminAuthenticate,
 };

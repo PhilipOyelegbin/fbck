@@ -1,18 +1,26 @@
 import {
   Chart as ChartJs,
-  LineElement,
+  BarElement,
   CategoryScale,
   LinearScale,
   Tooltip,
   Legend,
+  Title,
 } from "chart.js";
 import { useState, useEffect } from "react";
-import { Line } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import Loading from "../../../../components/loading";
 
-ChartJs.register(LineElement, CategoryScale, LinearScale, Tooltip, Legend);
+ChartJs.register(
+  BarElement,
+  CategoryScale,
+  LinearScale,
+  Tooltip,
+  Legend,
+  Title
+);
 
-export default function LineChart() {
+export default function BarChart() {
   const [candidateData, setCandidateData] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
 
@@ -20,18 +28,28 @@ export default function LineChart() {
     labels: candidateData?.map((data) => data.name) || [],
     datasets: [
       {
-        label: "Top Voted Candidate",
+        label: "Votes",
         data: candidateData?.map((data) => data.vote.length) || [],
-        backgroundColor: ["#face14", "#495E57"],
-        borderColor: "black",
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
+        borderColor: "rgb(255, 99, 132)",
         borderWidth: 1,
       },
     ],
   };
 
   const options = {
+    indexAxis: "y",
     responsive: true,
     maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: "top",
+      },
+      title: {
+        display: true,
+        text: "Top Voted Candidate",
+      },
+    },
   };
 
   useEffect(() => {
@@ -56,8 +74,6 @@ export default function LineChart() {
       } catch (error) {
         setErrorMsg(error.message);
         console.error("Error fetching data:", error);
-      } finally {
-        setLoading(false);
       }
     };
 
@@ -73,8 +89,8 @@ export default function LineChart() {
   }
 
   return (
-    <section className='chart-section'>
-      <Line data={data} options={options} className='line-chart' />
+    <section className='my-5 h-96'>
+      <Bar data={data} options={options} />
     </section>
   );
 }

@@ -79,7 +79,9 @@ function CandidatePage() {
                     {item.id.split("-")[0]}...
                   </td>
                   <td className='py-1 px-2 border-b'>{item.name}</td>
-                  <td className='py-1 px-2 border-b'>{item.vote || 0}</td>
+                  <td className='py-1 px-2 border-b'>
+                    {item.vote.length || 0}
+                  </td>
                   <td className='py-1 px-2 border-b'>
                     <div className='flex gap-2 text-xl'>
                       <Link

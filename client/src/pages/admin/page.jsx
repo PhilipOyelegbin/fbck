@@ -11,7 +11,7 @@ function AdminLoginPage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const resp = await fetch(`${import.meta.env.VITE_API_URI}/api/login`, {
+      const resp = await fetch(`${import.meta.env.VITE_API_URI}/api/auth`, {
         method: "POST",
         body: JSON.stringify({
           email,
@@ -24,15 +24,11 @@ function AdminLoginPage() {
 
       if (!resp.ok) {
         toast.error("Invalid details!");
-      }
-
-      const user = await resp.json();
-      const decode = jwtDecode(user.token);
-
-      if (decode.role !== import.meta.env.VITE_SSP) {
-        toast.error("You are not authorized");
       } else {
-        localStorage.setItem("token", user.token);
+        const admin = await resp.json();
+        const decode = jwtDecode(admin.token);
+        localStorage.setItem("token", admin.token);
+        localStorage.setItem("user", decode.id);
         navigate("/panel");
       }
     } catch (error) {

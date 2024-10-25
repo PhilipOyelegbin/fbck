@@ -89,11 +89,21 @@ const deleteVoteById = async (id) => {
   }
 };
 
+const deleteVotes = async () => {
+  try {
+    const vote = await prisma.vote.deleteMany();
+    return vote;
+  } catch (error) {
+    throw error;
+  }
+};
+
 module.exports = {
   createVote,
   getVotes,
   getUserVotes,
   getCandidateVotes,
   getVoteById,
+  deleteVotes,
   deleteVoteById,
 };

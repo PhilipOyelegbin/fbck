@@ -43,6 +43,8 @@ After installation, you can use the following commands to manage your kodashub a
 
 - Click **[here](https://kodashub.netlify.app)** to access the live application
 
+_Note: react-chartjs2 was used for the chart (https://react-chartjs-2-two.vercel.app/examples/horizontal-bar-chart)_
+
 ![preview](./preview.png)
 
 ## Contributing
