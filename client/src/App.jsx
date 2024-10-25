@@ -17,7 +17,7 @@ import Loader from "./components/loading";
 
 // general routes
 const Home = lazy(() => import("./pages/general/home/page"));
-const Services = lazy(() => import("./pages/general/services/page"));
+const About = lazy(() => import("./pages/general/about/page"));
 const Contact = lazy(() => import("./pages/general/contact/page"));
 const Login = lazy(() => import("./pages/auth/login/page"));
 const Register = lazy(() => import("./pages/auth/register/page"));
@@ -50,7 +50,7 @@ function App() {
       <Route>
         <Route path='/' element={<GeneralLayout />}>
           <Route index element={<Home />} />
-          <Route path='/services' element={<Services />} />
+          <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
         </Route>
         <Route element={<AuthLayout />}>
