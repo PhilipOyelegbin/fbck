@@ -8,7 +8,7 @@ export default function Footer() {
     { label: "Home", link: "/" },
     { label: "About", link: "/about" },
     { label: "Gallery", link: "/gallery" },
-    { label: "Contact", link: "/contact" },
+    // { label: "Contact", link: "/contact" },
   ];
 
   const socialLink = [

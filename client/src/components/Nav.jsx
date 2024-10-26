@@ -10,7 +10,7 @@ export default function Navbar() {
     { label: "Home", url: "/" },
     { label: "About", url: "/about" },
     { label: "Gallery", url: "/gallery" },
-    { label: "Contact", url: "/contact" },
+    // { label: "Contact", url: "/contact" },
   ];
 
   return (
@@ -38,7 +38,7 @@ export default function Navbar() {
             {item.label}
           </NavLink>
         ))}
-        <Link to='/login' className='btn'>
+        <Link to='/login' className='btn max-w-fit'>
           Login
         </Link>
         <FaTimes

@@ -1,17 +1,15 @@
-import WebPricing from "./components/WebPricing";
-import HostPricing from "./components/HostPricing";
-import FAQ from "./components/FAQ";
+import ContactSection from "./components/ContactSection";
 import HeroSection from "./components/HeroSection";
 import HistorySection from "./components/HistorySection";
+import TeamSection from "./components/TeamSection";
 
 function About() {
   return (
     <article>
       <HeroSection />
       <HistorySection />
-      <WebPricing />
-      <HostPricing />
-      <FAQ />
+      <TeamSection />
+      <ContactSection />
     </article>
   );
 }
