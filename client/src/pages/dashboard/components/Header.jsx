@@ -8,13 +8,13 @@ export const Header = ({ handleToggle }) => {
   return (
     <header className='flex justify-between items-center p-5 shadow-md'>
       <FaAlignJustify
-        className='cursor-pointer text-purple-500'
+        className='cursor-pointer text-blue-500'
         onClick={handleToggle}
       />
       <h3>
         {headerTitle.length < 2 ? "DASHBOARD" : headerTitle[1]?.toUpperCase()}
       </h3>
-      <FaUserCircle className='w-10 h-10 text-purple-500' />
+      <FaUserCircle className='w-10 h-10 text-blue-500' />
     </header>
   );
 };

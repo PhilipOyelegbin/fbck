@@ -45,9 +45,7 @@ export default function CreateCandidate() {
   return (
     <div className='p-5 bg-white rounded shadow-md flex gap-5 justify-center'>
       <div className='flex-1'>
-        <h2 className='text-3xl font-bold text-purple-600 mb-4'>
-          Create a new candidate
-        </h2>
+        <h3 className='text-3xl font-bold mb-4'>Create a new candidate</h3>
 
         <form onSubmit={handleSave}>
           <label className='block mb-2'>

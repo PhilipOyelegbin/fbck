@@ -9,7 +9,7 @@ export const Header = ({ handleToggle }) => {
   return (
     <header className='flex justify-between items-center p-5 shadow-md'>
       <FaAlignJustify
-        className='cursor-pointer text-purple-500'
+        className='cursor-pointer text-blue-500'
         onClick={handleToggle}
       />
       <h3>
@@ -18,7 +18,7 @@ export const Header = ({ handleToggle }) => {
       <Link to='/panel/profile'>
         <img
           src={admin}
-          className='w-10 border-2 border-purple-500 aspect-square rounded-full'
+          className='w-10 border-2 border-blue-500 aspect-square rounded-full'
           alt='avatar'
         />
       </Link>

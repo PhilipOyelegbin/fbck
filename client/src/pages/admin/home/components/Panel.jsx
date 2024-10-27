@@ -44,16 +44,16 @@ function Panel() {
 
   return (
     <div className='p-5 bg-white rounded shadow-md'>
-      <h2 className='text-3xl font-bold text-purple-600 mb-4'>Admin Panel</h2>
+      <h3 className='text-3xl font-bold mb-4'>Admin Panel</h3>
 
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5'>
-        <div className='bg-purple-100 p-4 rounded shadow-md flex items-center gap-5 justify-center'>
+        <div className='bg-indigo-100 p-4 rounded shadow-md flex items-center gap-5 justify-center'>
           <div>
-            <h3 className='text-lg font-bold text-purple-600 mb-2'>Users</h3>
+            <h3 className='text-lg font-bold text-indigo-600 mb-2'>Users</h3>
             <p className='text-3xl font-bold text-gray-700'>{users}</p>
             <Link
               to='/panel/users'
-              className='text-sm text-purple-600 hover:text-purple-700'>
+              className='text-sm text-indigo-600 hover:text-indigo-700'>
               View All Users
             </Link>
           </div>

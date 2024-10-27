@@ -57,7 +57,7 @@ function CandidatePage() {
 
   return (
     <section className='p-3 bg-white rounded shadow-md'>
-      <h2 className='text-3xl font-bold text-purple-600 mb-4'>Candidates</h2>
+      <h3 className='text-3xl font-bold mb-4'>Candidates</h3>
 
       {data.length === 0 ? (
         <h5 className='text-center text-blue-600 mb-4'>No data to display</h5>

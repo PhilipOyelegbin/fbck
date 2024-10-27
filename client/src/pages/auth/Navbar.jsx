@@ -15,7 +15,7 @@ export const Navbar = () => {
             ? "/register"
             : route.pathname === "/register" && "/login"
         }
-        className='underline text-xl hover:text-purple-500 ease-linear duration-300'>
+        className='underline text-xl hover:text-blue-500 ease-linear duration-300'>
         {route.pathname === "/login"
           ? "Register"
           : route.pathname === "/register" && "Login"}

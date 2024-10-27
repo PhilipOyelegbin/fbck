@@ -58,7 +58,7 @@ function UserPage() {
   return (
     <section className='p-3 bg-white rounded shadow-md'>
       <div className='flex justify-between'>
-        <h2 className='text-3xl font-bold text-purple-600 mb-4'>Users</h2>
+        <h3 className='text-3xl font-bold mb-4'>Users</h3>
         <Link to='/panel/users/new'>
           <FaPlusSquare className='text-blue-500 text-2xl' />
         </Link>

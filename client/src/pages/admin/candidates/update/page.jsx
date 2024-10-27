@@ -59,9 +59,7 @@ export default function UpdateCandidate() {
   return (
     <section className='p-5 bg-white rounded shadow-md'>
       <div className='flex-1'>
-        <h2 className='text-3xl font-bold text-purple-600 mb-4'>
-          Update a candidate
-        </h2>
+        <h3 className='text-3xl font-bold mb-4'>Update a candidate</h3>
 
         <form onSubmit={handleSave}>
           <label className='block mb-2'>

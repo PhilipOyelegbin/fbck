@@ -74,7 +74,7 @@ function AdminInvoicePage() {
   return (
     <section className='p-3 bg-white rounded shadow-md'>
       <div className='flex justify-between items-start'>
-        <h2 className='text-3xl font-bold text-purple-600 mb-4'>Votes</h2>
+        <h3 className='text-3xl font-bold mb-4'>Votes</h3>
         <button
           className='px-4 py-2 rounded-lg bg-red-500 text-white hover:bg-red-600 duration-300 ease-linear'
           onClick={handleDeleteAllVote}>

@@ -40,9 +40,7 @@ export default function CreateAdmin() {
   return (
     <section className='p-5 bg-white rounded shadow-md'>
       <div className='flex-1'>
-        <h2 className='text-3xl font-bold text-purple-600 mb-4'>
-          Create a new admin
-        </h2>
+        <h3 className='text-3xl mb-4'>Create a new admin</h3>
 
         <form onSubmit={handleSave}>
           <label className='block mb-2'>
