@@ -18,7 +18,7 @@ import Loader from "./components/loading";
 // general routes
 const Home = lazy(() => import("./pages/general/home/page"));
 const About = lazy(() => import("./pages/general/about/page"));
-const Contact = lazy(() => import("./pages/general/contact/page"));
+const Gallery = lazy(() => import("./pages/general/gallery/page"));
 const Login = lazy(() => import("./pages/auth/login/page"));
 const Register = lazy(() => import("./pages/auth/register/page"));
 // dashboard routes
@@ -51,7 +51,7 @@ function App() {
         <Route path='/' element={<GeneralLayout />}>
           <Route index element={<Home />} />
           <Route path='/about' element={<About />} />
-          <Route path='/contact' element={<Contact />} />
+          <Route path='/gallery' element={<Gallery />} />
         </Route>
         <Route element={<AuthLayout />}>
           <Route path='/login' element={<Login />} />

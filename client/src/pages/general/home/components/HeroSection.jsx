@@ -1,4 +1,4 @@
-import { FiFacebook, FiRadio, FiYoutube } from "react-icons/fi";
+import { FiFacebook, FiRadio, FiTwitter, FiYoutube } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
 function HeroSection() {
@@ -9,15 +9,24 @@ function HeroSection() {
         <h5 className='mb-5'>
           Come as You Are and Embrace the Spirit of Community and Belonging.
         </h5>
-        <div className='grid grid-cols-3 gap-10 text-3xl md:text-6xl'>
-          <Link to='/'>
+        <div className='grid grid-cols-4 gap-10 text-3xl md:text-6xl'>
+          <Link
+            to='https://www.youtube.com/channel/UCcq7J7Hqq96MDl7ZXb0IreA'
+            target='_blank'>
             <FiYoutube className='text-red-600 hover:text-red-500 duration-150 ease-linear' />
           </Link>
-          <Link to='/'>
+          <Link
+            to='https://web.facebook.com/First-Baptist-Church-Kosofe-LAGOS-171671993195118/?ref=br_rs'
+            target='_blank'>
             <FiFacebook className='text-blue-600 hover:text-blue-500 duration-150 ease-linear' />
           </Link>
-          <Link to='/'>
-            <FiRadio className='text-red-600 hover:text-red-500 duration-150 ease-linear' />
+          <Link
+            to='https://twitter.com/search?q=fbc%20kosofe&src=typd'
+            target='_blank'>
+            <FiTwitter className='text-red-600 hover:text-red-500 duration-150 ease-linear' />
+          </Link>
+          <Link to='/' target='_blank'>
+            <FiRadio className='text-blue-600 hover:text-blue-500 duration-150 ease-linear' />
           </Link>
         </div>
       </div>

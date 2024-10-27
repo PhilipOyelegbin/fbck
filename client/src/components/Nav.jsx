@@ -15,7 +15,7 @@ export default function Navbar() {
 
   return (
     <nav className='flex items-center justify-between py-2 px-5 lg:px-20 shadow-md relative'>
-      <img src={logo} className='w-10 aspect-square' alt='logo' />
+      <img src={logo} className='w-10 md:w-14 aspect-square' alt='logo' />
 
       <FaAlignJustify
         className='md:hidden cursor-pointer h-6 w-6 text-blue-600'

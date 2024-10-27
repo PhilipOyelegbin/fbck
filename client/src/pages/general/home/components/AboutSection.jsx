@@ -14,7 +14,7 @@ function AboutSection() {
         HAPPY PEOPLE.” The church belongs to the worldwide family of Baptist
         through the{" "}
         <Link to='https://nigerianbaptist.org' className='font-bold'>
-          Nigerai Baptist Convention.
+          Nigeria Baptist Convention.
         </Link>{" "}
         <Link to='/about' className='underline text-blue-500'>
           Continue reading...

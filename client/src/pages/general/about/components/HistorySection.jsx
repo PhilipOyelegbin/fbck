@@ -14,11 +14,11 @@ function HistorySection() {
         <Link
           to='https://nigerianbaptist.org'
           className='underline text-blue-500'>
-          Nigerai Baptist Convention.
+          Nigeria Baptist Convention.
         </Link>
       </p>
 
-      <h4>Our COmmitment</h4>
+      <h4>Our Commitment</h4>
       <p>
         The great commission, as contained in Matthew 28:19-20 means a lot to
         us. We dedicate our resources to:

@@ -14,12 +14,20 @@ export default function Footer() {
   const socialLink = [
     {
       label: "Facebook",
-      url: "https://m.facebook.com/kodashub",
+      url: "https://web.facebook.com/First-Baptist-Church-Kosofe-LAGOS-171671993195118/?ref=br_rs",
       icon: <FiFacebook />,
     },
-    { label: "Twitter", url: "https://m.x.com/kodashub", icon: <FiTwitter /> },
-    { label: "Youtube", url: "/", icon: <FiYoutube /> },
-    { label: "MixLr", url: "/", icon: <FiRadio /> },
+    {
+      label: "Twitter",
+      url: "https://twitter.com/search?q=fbc%20kosofe&src=typd",
+      icon: <FiTwitter />,
+    },
+    {
+      label: "Youtube",
+      url: "https://www.youtube.com/channel/UCcq7J7Hqq96MDl7ZXb0IreA",
+      icon: <FiYoutube />,
+    },
+    { label: "Mixlr", url: "/", icon: <FiRadio /> },
   ];
 
   return (
