@@ -14,8 +14,8 @@ async function verifyPassword(password, hashedPassword) {
 }
 
 async function generateToken(user) {
-  const payload = { id: user.id, email: user.email, role: user.role };
-  return jwt.sign(payload, secretKey, { expiresIn: "4h" });
+  const payload = { id: user.id, email: user.email };
+  return jwt.sign(payload, secretKey, { expiresIn: "2h" });
 }
 
 async function authenticate(email, password) {
@@ -31,6 +31,11 @@ async function authenticate(email, password) {
   return generateToken(user);
 }
 
+async function generateAdminToken(admin) {
+  const payload = { id: admin.id, email: admin.email, role: "Admin" };
+  return jwt.sign(payload, secretKey, { expiresIn: "2h" });
+}
+
 async function adminAuthenticate(email, password) {
   const admin = await prisma.admin.findUnique({ where: { email } });
 
@@ -41,7 +46,7 @@ async function adminAuthenticate(email, password) {
   if (!isValid) {
     throw new Error("Invalid email or password");
   }
-  return generateToken(admin);
+  return generateAdminToken(admin);
 }
 
 module.exports = {

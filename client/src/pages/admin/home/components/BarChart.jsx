@@ -59,7 +59,7 @@ export default function BarChart() {
           `${import.meta.env.VITE_API_URI}/api/candidate`,
           {
             headers: {
-              Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
           }
         );

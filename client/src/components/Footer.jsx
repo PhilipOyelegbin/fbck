@@ -14,20 +14,24 @@ export default function Footer() {
   const socialLink = [
     {
       label: "Facebook",
-      url: "https://web.facebook.com/First-Baptist-Church-Kosofe-LAGOS-171671993195118/?ref=br_rs",
+      url: "https://facebook.com/profile.php?id=100011203590963",
       icon: <FiFacebook />,
     },
     {
       label: "Twitter",
-      url: "https://twitter.com/search?q=fbc%20kosofe&src=typd",
+      url: "https://x.com/Fbckosofelagos",
       icon: <FiTwitter />,
     },
     {
       label: "Youtube",
-      url: "https://www.youtube.com/channel/UCcq7J7Hqq96MDl7ZXb0IreA",
+      url: "https://www.youtube.com/@FirstBaptistChurchKosofeLagos",
       icon: <FiYoutube />,
     },
-    { label: "Mixlr", url: "/", icon: <FiRadio /> },
+    {
+      label: "Mixlr",
+      url: "https://firstbaptistchurchkosofe.mixlr.com",
+      icon: <FiRadio />,
+    },
   ];
 
   return (
@@ -74,7 +78,8 @@ export default function Footer() {
         </div>
       </div>
       <p className='my-3 text-gray-700 text-center'>
-        &copy; {year} :: All rights reserverd
+        &copy; {year} :: First Baptist Church Kosofe Lagos | Powered by Media
+        Unit
       </p>
     </footer>
   );

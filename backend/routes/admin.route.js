@@ -13,8 +13,8 @@ const router = Router();
 
 router.post(
   "/v1/api/admin",
-  // authenticated,
-  // authorized("ADMIN"),
+  authenticated,
+  authorized("Admin"),
   async (req, res) => {
     /*
       #swagger.tags = ['Admin']
@@ -25,8 +25,8 @@ router.post(
         required: true,
         schema: {
           name: "string",
-          price: "string",
-          url: "string",
+          email: "string",
+          password: "string",
         }
       }
     */
@@ -53,8 +53,8 @@ router.post(
 
 router.get(
   "/v1/api/admin",
-  // authenticated,
-  // authorized("ADMIN"),
+  authenticated,
+  authorized("Admin"),
   async (req, res) => {
     /*
       #swagger.tags = ['Admin']
@@ -71,31 +71,36 @@ router.get(
   }
 );
 
-router.get("/v1/api/admin/:id", async (req, res) => {
-  /*
+router.get(
+  "/v1/api/admin/:id",
+  authenticated,
+  authorized("Admin"),
+  async (req, res) => {
+    /*
     #swagger.tags = ['Admin']
     #swagger.security = [{"bearerAuth": []}]
   */
-  try {
-    const { id } = req.params;
-    if (!id) {
-      return res.status(403).json({ message: "Bad request" });
-    }
+    try {
+      const { id } = req.params;
+      if (!id) {
+        return res.status(403).json({ message: "Bad request" });
+      }
 
-    const admin = await getAdminById(id);
-    if (!admin) {
-      return res.status(404).json({ message: "Admin not found" });
+      const admin = await getAdminById(id);
+      if (!admin) {
+        return res.status(404).json({ message: "Admin not found" });
+      }
+      return res.status(200).json({ message: "Admin found", data: admin });
+    } catch (error) {
+      return res.status(500).json({ error: error.message });
     }
-    return res.status(200).json({ message: "Admin found", data: admin });
-  } catch (error) {
-    return res.status(500).json({ error: error.message });
   }
-});
+);
 
 router.patch(
   "/v1/api/admin/:id",
-  // authenticated,
-  // authorized("ADMIN"),
+  authenticated,
+  authorized("Admin"),
   async (req, res) => {
     /*
       #swagger.tags = ['Admin']
@@ -142,8 +147,8 @@ router.patch(
 
 router.delete(
   "/v1/api/admin/:id",
-  // authenticated,
-  // authorized("ADMIN"),
+  authenticated,
+  authorized("Admin"),
   async (req, res) => {
     /*
     #swagger.tags = ['Admin']

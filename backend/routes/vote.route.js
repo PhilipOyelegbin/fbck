@@ -11,37 +11,32 @@ const { prisma } = require("../utils/connect");
 
 const router = Router();
 
-router.post(
-  "/v1/api/vote",
-  // authenticated,
-  // authorized("ADMIN"),
-  async (req, res) => {
-    /*
+router.post("/v1/api/vote", authenticated, async (req, res) => {
+  /*
       #swagger.tags = ['Vote']
       #swagger.security = [{"bearerAuth": []}]
     */
-    try {
-      const { userId, candidateId } = await req.body;
-      if (!userId || !candidateId) {
-        return res.status(400).json({ message: "Bad request" });
-      }
-
-      const existingVote = await prisma.vote.findFirst({ where: { userId } });
-      if (existingVote) {
-        return res.status(400).json({ message: "User has already voted" });
-      }
-
-      const vote = await createVote(userId, candidateId);
-      return res
-        .status(200)
-        .json({ message: "Vote created successfully", data: vote });
-    } catch (error) {
-      return res.status(500).json({ error: error.message });
+  try {
+    const { userId, candidateId } = await req.body;
+    if (!userId || !candidateId) {
+      return res.status(400).json({ message: "Bad request" });
     }
-  }
-);
 
-router.get("/v1/api/vote", async (req, res) => {
+    const existingVote = await prisma.vote.findFirst({ where: { userId } });
+    if (existingVote) {
+      return res.status(400).json({ message: "User has already voted" });
+    }
+
+    const vote = await createVote(userId, candidateId);
+    return res
+      .status(200)
+      .json({ message: "Vote created successfully", data: vote });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+});
+
+router.get("/v1/api/vote", authenticated, async (req, res) => {
   // #swagger.tags = ['Vote']
   try {
     const vote = await getVotes();
@@ -51,7 +46,7 @@ router.get("/v1/api/vote", async (req, res) => {
   }
 });
 
-router.get("/v1/api/vote/:id", async (req, res) => {
+router.get("/v1/api/vote/:id", authenticated, async (req, res) => {
   // #swagger.tags = ['Vote']
   try {
     const { id } = req.params;
@@ -73,7 +68,7 @@ router.get("/v1/api/vote/:id", async (req, res) => {
 // router.patch(
 //   "/v1/api/Vote/:id",
 //   authenticated,
-//   authorized("ADMIN"),
+//   authorized("Admin"),
 //   async (req, res) => {
 //     /*
 //       #swagger.tags = ['Vote']
@@ -114,8 +109,8 @@ router.get("/v1/api/vote/:id", async (req, res) => {
 
 router.delete(
   "/v1/api/vote/:id",
-  // authenticated,
-  // authorized("ADMIN"),
+  authenticated,
+  authorized("Admin"),
   async (req, res) => {
     /*
       #swagger.tags = ['Vote']
@@ -142,8 +137,8 @@ router.delete(
 
 router.delete(
   "/v1/api/vote",
-  // authenticated,
-  // authorized("ADMIN"),
+  authenticated,
+  authorized("Admin"),
   async (req, res) => {
     /*
       #swagger.tags = ['Vote']

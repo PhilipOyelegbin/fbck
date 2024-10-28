@@ -44,7 +44,7 @@ router.patch("/v1/api/forgotpassword", async (req, res) => {
       },
     });
     const mailOptions = {
-      from: `"KodasHub" <${process.env.SMTP_USER}>`,
+      from: `"FCB Kosofe" <${process.env.SMTP_USER}>`,
       to: email,
       subject: `Password Reset Request`,
       html: `
@@ -56,7 +56,7 @@ router.patch("/v1/api/forgotpassword", async (req, res) => {
 
       <p>Warm regards,</p>
 
-      <p><b>KodasHub Support</b></p>
+      <p><b>FCB Kosofe Support</b></p>
       `,
     };
 

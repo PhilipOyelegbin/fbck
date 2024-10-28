@@ -16,7 +16,7 @@ function ServiceSecton() {
           Our Sunday Services
         </h3>
       </div>
-      <div className='mt-8 space-y-6 justify-center gap-6 sm:grid sm:grid-cols-2 sm:space-y-0 lg:grid-cols-3 xl:grid-cols-4'>
+      <div className='mt-8 space-y-6 justify-center gap-6 sm:grid sm:grid-cols-2 sm:space-y-0 lg:grid-cols-3'>
         {data?.map((list, idx) => (
           <div
             key={idx}

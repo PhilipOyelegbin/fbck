@@ -5,7 +5,7 @@ const { authenticated } = require("../utils/middleware");
 
 const router = Router();
 
-router.post("/v1/api/servicemail", authenticated, async (req, res) => {
+router.post("/v1/api/servicemail", async (req, res) => {
   /*
     #swagger.tags = ['Mailer']
     #swagger.security = [{"bearerAuth": []}]

@@ -11,21 +11,19 @@ function HeroSection() {
         </h5>
         <div className='grid grid-cols-4 gap-10 text-3xl md:text-6xl'>
           <Link
-            to='https://www.youtube.com/channel/UCcq7J7Hqq96MDl7ZXb0IreA'
+            to='https://www.youtube.com/@FirstBaptistChurchKosofeLagos'
             target='_blank'>
             <FiYoutube className='text-red-600 hover:text-red-500 duration-150 ease-linear' />
           </Link>
           <Link
-            to='https://web.facebook.com/First-Baptist-Church-Kosofe-LAGOS-171671993195118/?ref=br_rs'
+            to='https://facebook.com/profile.php?id=100011203590963'
             target='_blank'>
             <FiFacebook className='text-blue-600 hover:text-blue-500 duration-150 ease-linear' />
           </Link>
-          <Link
-            to='https://twitter.com/search?q=fbc%20kosofe&src=typd'
-            target='_blank'>
+          <Link to='https://x.com/Fbckosofelagos' target='_blank'>
             <FiTwitter className='text-red-600 hover:text-red-500 duration-150 ease-linear' />
           </Link>
-          <Link to='/' target='_blank'>
+          <Link to='https://firstbaptistchurchkosofe.mixlr.com' target='_blank'>
             <FiRadio className='text-blue-600 hover:text-blue-500 duration-150 ease-linear' />
           </Link>
         </div>

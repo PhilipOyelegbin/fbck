@@ -14,7 +14,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className='flex items-center justify-between py-2 px-5 lg:px-20 shadow-md relative'>
+    <nav className='flex items-center justify-between py-2 px-5 md:px-20 shadow-md relative'>
       <img src={logo} className='w-10 md:w-14 aspect-square' alt='logo' />
 
       <FaAlignJustify

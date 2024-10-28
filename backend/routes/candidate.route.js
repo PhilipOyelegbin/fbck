@@ -12,8 +12,8 @@ const router = Router();
 
 router.post(
   "/v1/api/candidate",
-  // authenticated,
-  // authorized("ADMIN"),
+  authenticated,
+  authorized("Admin"),
   async (req, res) => {
     /*
       #swagger.tags = ['Candidate']
@@ -52,27 +52,23 @@ router.post(
   }
 );
 
-router.get(
-  "/v1/api/candidate",
-  // authenticated,
-  async (req, res) => {
-    /*
+router.get("/v1/api/candidate", authenticated, async (req, res) => {
+  /*
       #swagger.tags = ['Candidate']
       #swagger.security = [{"bearerAuth": []}]
     */
-    try {
-      const candidate = await getCandidates();
-      return res.status(200).json({
-        message: "All candidate received successfully",
-        data: candidate,
-      });
-    } catch (error) {
-      return res.status(500).json({ error: error.message });
-    }
+  try {
+    const candidate = await getCandidates();
+    return res.status(200).json({
+      message: "All candidate received successfully",
+      data: candidate,
+    });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
   }
-);
+});
 
-router.get("/v1/api/candidate/:id", async (req, res) => {
+router.get("/v1/api/candidate/:id", authenticated, async (req, res) => {
   /*
     #swagger.tags = ['Candidate']
     #swagger.security = [{"bearerAuth": []}]
@@ -97,8 +93,8 @@ router.get("/v1/api/candidate/:id", async (req, res) => {
 
 router.patch(
   "/v1/api/candidate/:id",
-  // authenticated,
-  // authorized("ADMIN"),
+  authenticated,
+  authorized("Admin"),
   async (req, res) => {
     /*
       #swagger.tags = ['Candidate']
@@ -141,8 +137,8 @@ router.patch(
 
 router.delete(
   "/v1/api/candidate/:id",
-  // authenticated,
-  // authorized("ADMIN"),
+  authenticated,
+  authorized("Admin"),
   async (req, res) => {
     /*
       #swagger.tags = ['Candidate']
