@@ -66,7 +66,6 @@ function CandidatePage() {
           <table className='text-center min-w-full bg-white border border-gray-300'>
             <thead>
               <tr className='bg-gray-200'>
-                <th className='py-2 px-4 border-b'>ID</th>
                 <th className='py-2 px-4 border-b'>Name</th>
                 <th className='py-2 px-4 border-b'>Vote</th>
                 <th className='py-2 px-4 border-b'>Action</th>
@@ -75,9 +74,6 @@ function CandidatePage() {
             <tbody>
               {data?.map((item) => (
                 <tr key={item.id} className='text-sm hover:bg-gray-100'>
-                  <td className='py-1 px-2 border-b'>
-                    {item.id.split("-")[0]}...
-                  </td>
                   <td className='py-1 px-2 border-b'>{item.name}</td>
                   <td className='py-1 px-2 border-b'>
                     {item.vote.length || 0}

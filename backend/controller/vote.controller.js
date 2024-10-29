@@ -20,7 +20,12 @@ const createVote = async (user, candidate) => {
 
 const getVotes = async () => {
   try {
-    const vote = await prisma.vote.findMany();
+    const vote = await prisma.vote.findMany({
+      include: {
+        user: true,
+        candidate: true,
+      },
+    });
     return vote;
   } catch (error) {
     throw error;
@@ -59,6 +64,10 @@ const getVoteById = async (id) => {
   try {
     const vote = await prisma.vote.findUnique({
       where: { id },
+      include: {
+        user: true,
+        candidate: true,
+      },
     });
     return vote;
   } catch (error) {

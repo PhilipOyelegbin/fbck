@@ -24,10 +24,9 @@ export default function BarChart({ candidateData }) {
     labels: candidateData?.map((data) => data.name) || [],
     datasets: [
       {
-        label: "Votes",
         data: candidateData?.map((data) => data.vote.length) || [],
-        backgroundColor: "rgba(53, 162, 235, 0.5)",
-        borderColor: "rgb(53, 162, 235)",
+        backgroundColor: ["rgba(53, 162, 235, 0.5)", "rgba(255, 99, 132, 0.5)"],
+        borderColor: ["rgba(53, 162, 235, 0.5)", "rgba(255, 99, 132, 0.5)"],
         borderWidth: 1,
       },
     ],
@@ -38,9 +37,7 @@ export default function BarChart({ candidateData }) {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
-      legend: {
-        position: "top",
-      },
+      legend: false,
       title: {
         display: true,
         text: "Top Voted Candidate",

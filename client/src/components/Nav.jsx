@@ -39,7 +39,7 @@ export default function Navbar() {
           </NavLink>
         ))}
         <Link to='/login' className='btn max-w-fit'>
-          Login
+          Go To Ballot
         </Link>
         <FaTimes
           className='mx-auto md:hidden cursor-pointer h-6 w-6 text-blue-600'

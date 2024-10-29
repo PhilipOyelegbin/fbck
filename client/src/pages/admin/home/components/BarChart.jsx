@@ -30,7 +30,7 @@ export default function BarChart() {
       {
         label: "Votes",
         data: candidateData?.map((data) => data.vote.length) || [],
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
+        backgroundColor: ["rgba(255, 99, 132, 0.5)", "rgba(53, 162, 235, 0.5)"],
         borderColor: "rgb(255, 99, 132)",
         borderWidth: 1,
       },

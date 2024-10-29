@@ -56,6 +56,35 @@ export default function Datapool() {
 
   return (
     <section className='min-h-screen'>
+      <div className='shadow-md rounded-lg p-5 my-5 bg-white'>
+        <div className='flex flex-col md:flex-row justify-between items-center mb-4'>
+          <h2 className='text-xl font-semibold text-gray-700'>Result</h2>
+          <Link to='/dashboard/candidates' className='btn max-w-fit'>
+            Click To Vote
+          </Link>
+        </div>
+        <div className='overflow-x-auto'>
+          <table className='text-center min-w-full bg-white border border-gray-300'>
+            <thead>
+              <tr className='bg-gray-200'>
+                <th className='py-2 px-4 border-b'>Name</th>
+                <th className='py-2 px-4 border-b'>Votes</th>
+              </tr>
+            </thead>
+            <tbody>
+              {candidateData.map((item) => (
+                <tr key={item.id} className='text-sm hover:bg-gray-100'>
+                  <td className='py-1 px-2 border-b'>{item.name}</td>
+                  <td className='py-1 px-2 border-b'>
+                    {item.vote.length || 0}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
       <div className='bg-white shadow-md rounded-lg p-3 mb-5'>
         <h3 className='text-xl font-semibold text-gray-700 mb-2'>
           Total Voters:{" "}
@@ -67,41 +96,6 @@ export default function Datapool() {
             Vote Count per Candidate
           </h3>
           <BarChart candidateData={candidateData} />
-        </div>
-      </div>
-
-      <div className='shadow-md rounded-lg p-5 my-5 bg-white'>
-        <div className='flex justify-between items-center'>
-          <h2 className='text-xl font-semibold text-gray-700 mb-4'>
-            Candidates
-          </h2>
-          <Link to='/dashboard/candidates' className='underline'>
-            View all
-          </Link>
-        </div>
-        <div className='overflow-x-auto'>
-          <table className='text-center min-w-full bg-white border border-gray-300'>
-            <thead>
-              <tr className='bg-gray-200'>
-                <th className='py-2 px-4 border-b'>ID</th>
-                <th className='py-2 px-4 border-b'>Name</th>
-                <th className='py-2 px-4 border-b'>Votes</th>
-              </tr>
-            </thead>
-            <tbody>
-              {candidateData.map((item) => (
-                <tr key={item.id} className='text-sm hover:bg-gray-100'>
-                  <td className='py-1 px-2 border-b'>
-                    {item.id.split("-")[0]}...
-                  </td>
-                  <td className='py-1 px-2 border-b'>{item.name}</td>
-                  <td className='py-1 px-2 border-b'>
-                    {item.vote.length || 0}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
         </div>
       </div>
     </section>

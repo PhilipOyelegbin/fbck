@@ -7,6 +7,7 @@ import Loading from "../../../components/loading";
 function AdminInvoicePage() {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
+  console.log(data);
 
   const handleDeleteAllVote = async () => {
     try {
@@ -89,7 +90,6 @@ function AdminInvoicePage() {
           <table className='text-center min-w-full bg-white border border-gray-300'>
             <thead>
               <tr className='bg-gray-200'>
-                <th className='py-2 px-4 border-b'>ID</th>
                 <th className='py-2 px-4 border-b'>User</th>
                 <th className='py-2 px-4 border-b'>Candidate</th>
                 <th className='py-2 px-4 border-b'>Action</th>
@@ -98,11 +98,8 @@ function AdminInvoicePage() {
             <tbody>
               {data?.map((item) => (
                 <tr key={item.id} className='text-sm hover:bg-gray-100'>
-                  <td className='py-1 px-2 border-b'>
-                    {item.id.split("-")[0]}...
-                  </td>
-                  <td className='py-1 px-2 border-b'>{item.userId}</td>
-                  <td className='py-1 px-2 border-b'>{item.candidateId}</td>
+                  <td className='py-1 px-2 border-b'>{item.user.name}</td>
+                  <td className='py-1 px-2 border-b'>{item.candidate.name}</td>
                   <td className='py-1 px-2 border-b'>
                     <FaTrash
                       onClick={() => handleDeleteVoteById(item.id)}

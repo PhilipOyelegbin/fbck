@@ -71,7 +71,6 @@ function UserPage() {
           <table className='text-center min-w-full bg-white border border-gray-300'>
             <thead>
               <tr className='bg-gray-200'>
-                <th className='py-2 px-4 border-b'>ID</th>
                 <th className='py-2 px-4 border-b'>Name</th>
                 <th className='py-2 px-4 border-b'>Email</th>
                 <th className='py-2 px-4 border-b'>Date of Birth</th>
@@ -81,9 +80,6 @@ function UserPage() {
             <tbody>
               {data?.map((item) => (
                 <tr key={item.id} className='text-sm hover:bg-gray-100'>
-                  <td className='py-1 px-2 border-b'>
-                    {item.id.split("-")[0]}...
-                  </td>
                   <td className='py-1 px-2 border-b'>{item.name}</td>
                   <td className='py-1 px-2 border-b'>{item.email}</td>
                   <td className='py-1 px-2 border-b'>{item.date_of_birth}</td>
