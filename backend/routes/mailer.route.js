@@ -1,7 +1,6 @@
 require("dotenv").config();
 const { Router } = require("express");
 const { createTransport } = require("nodemailer");
-const { authenticated } = require("../utils/middleware");
 
 const router = Router();
 
@@ -23,7 +22,7 @@ router.post("/v1/api/servicemail", async (req, res) => {
     });
 
     const mailOptions = {
-      from: `"KodasHub" <${process.env.SMTP_USER}>`,
+      from: `"FBC Kosofe" <${process.env.SMTP_USER}>`,
       to: [recipient, process.env.SMTP_USER],
       subject,
       html: message,
