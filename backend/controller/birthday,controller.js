@@ -1,4 +1,5 @@
 const { getUsers } = require("./user.controller");
+const { createTransport } = require("nodemailer");
 
 async function sendBirthdayEmails() {
   // get all the celebrant from the user database
@@ -49,8 +50,6 @@ async function sendBirthdayEmails() {
     console.log("No birthdays today.");
   }
 }
-
-// sendBirthdayEmails();
 
 // Function to calculate the time until the next day at a specific hour (e.g., 9 AM [WAT])
 function scheduleDailyBirthdayCheck(hour, minute) {

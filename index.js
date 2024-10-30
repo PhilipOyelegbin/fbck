@@ -49,4 +49,4 @@ function scheduleDailyBirthdayCheck(hour, minute) {
 }
 
 // Start the daily birthday check at 9 AM
-scheduleDailyBirthdayCheck(9, 0);
+scheduleDailyBirthdayCheck(15, 20);
