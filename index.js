@@ -1,14 +1,23 @@
 const data = [
-  { name: "John", email: "john@gmail.com", birthday: "1990/01/01" },
+  { name: "John", email: "john@gmail.com", birthday: "2010/10/31" },
   { name: "Peter", email: "peter@gmail.com", birthday: "2024/10/30" },
   { name: "Mark", email: "mark@gmailc.om", birthday: "1990/01/01" },
-  { name: "Philip", email: "philip@gmail.com", birthday: "2024/10/30" },
+  { name: "Philip", email: "philip@gmail.com", birthday: "1996/09/30" },
 ];
 
 async function sendBirthdayEmails(data) {
-  const today = new Date().toLocaleDateString();
+  const today = new Date();
+  const currentMonth = today.getMonth(); // 0-11
+  const currentDate = today.getDate(); // 1-31
+
   const emailsToSend = data
-    .filter((item) => new Date(item.birthday).toLocaleDateString() === today)
+    .filter((item) => {
+      const birthday = new Date(item.birthday);
+      return (
+        birthday.getMonth() === currentMonth &&
+        birthday.getDate() === currentDate
+      );
+    })
     .map((item) => item.email);
 
   if (emailsToSend.length > 0) {
@@ -18,8 +27,8 @@ async function sendBirthdayEmails(data) {
   }
 }
 
-// Function to calculate the time until the next day at a specific hour (e.g., 9 AM)
-function scheduleDailyBirthdayCheck(hour = 9, minute = 0) {
+// Function to calculate the time until the next day at a specific hour (e.g., 9 AM [GMT])
+function scheduleDailyBirthdayCheck(hour, minute) {
   const now = new Date();
   const firstRun = new Date();
   firstRun.setHours(hour, minute, 0, 0); // Set the desired hour and minute

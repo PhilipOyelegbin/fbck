@@ -3,11 +3,17 @@ const { getUsers } = require("./user.controller");
 async function sendBirthdayEmails() {
   // get all the celebrant from the user database
   const celebrant = await getUsers();
-  const today = new Date().toLocaleDateString();
+  const today = new Date();
+  const currentMonth = today.getMonth(); // 0-11
+  const currentDate = today.getDate(); // 1-31
   const recipient = celebrant
-    .filter(
-      (item) => new Date(item.date_of_birth).toLocaleDateString() === today
-    )
+    .filter((item) => {
+      const birthday = new Date(item.date_of_birth);
+      return (
+        birthday.getMonth() === currentMonth &&
+        birthday.getDate() === currentDate
+      );
+    })
     .map((item) => item.email);
 
   // send mails to the recipient gotten from the database
