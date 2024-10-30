@@ -23,7 +23,7 @@ export const LoginForm = () => {
       });
 
       if (!resp.ok) {
-        toast.error(resp.statusText);
+        toast.error("Invalid details");
       } else {
         const user = await resp.json();
         sessionStorage.setItem("token", user.token);

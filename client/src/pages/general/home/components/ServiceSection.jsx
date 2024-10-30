@@ -4,8 +4,8 @@ import yoruba from "../../../../assets/service3.jpg";
 
 const data = [
   { banner: sunrise, label: "Sunrise Service (7am -8am)" },
-  { banner: english, label: "English Service (8am - 11am)" },
-  { banner: yoruba, label: "Yoruba Service (12pm - 2pm)" },
+  { banner: english, label: "English Service (8am - 10am)" },
+  { banner: yoruba, label: "Yoruba Service (11am - 1pm)" },
 ];
 
 function ServiceSecton() {

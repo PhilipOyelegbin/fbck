@@ -13,25 +13,26 @@ export default function CreateAdmin() {
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
-  const handleSave = (e) => {
+  const handleSave = async (e) => {
     e.preventDefault();
     try {
-      fetch(`${import.meta.env.VITE_API_URI}/api/admin`, {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json;charset=UTF-8",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
-        .then((resp) => {
-          if (resp.ok) {
-            toast.success("New admin created");
-          } else {
-            toast.error(resp.statusText);
-          }
-        })
-        .catch((err) => toast.error(err));
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URI}/api/admin`,
+        {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json;charset=UTF-8",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+
+      if (response.ok) {
+        toast.success("New admin created");
+      } else {
+        toast.error(response.statusText);
+      }
     } catch (err) {
       toast.error(err);
     }

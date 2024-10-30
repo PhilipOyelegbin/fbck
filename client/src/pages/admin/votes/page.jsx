@@ -7,7 +7,6 @@ import Loading from "../../../components/loading";
 function AdminInvoicePage() {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
-  console.log(data);
 
   const handleDeleteAllVote = async () => {
     try {
@@ -79,7 +78,7 @@ function AdminInvoicePage() {
         <button
           className='px-4 py-2 rounded-lg bg-red-500 text-white hover:bg-red-600 duration-300 ease-linear'
           onClick={handleDeleteAllVote}>
-          Delete All Vote
+          Reset Ballot
         </button>
       </div>
 
