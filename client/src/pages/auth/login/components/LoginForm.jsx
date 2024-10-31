@@ -1,22 +1,30 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { object, string } from "yup";
+
+const schema = object({
+  email: string().email().required(),
+  password: string().min(6).required(),
+});
 
 export const LoginForm = () => {
   const route = useNavigate();
   const session = sessionStorage.getItem("user");
-  const [user, setUser] = useState({ email: "", password: "" });
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm({ mode: "onBlur", resolver: yupResolver(schema) });
 
-  const handleChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
-  };
-
-  const handleLogin = async (e) => {
+  const onLogin = async (data) => {
     try {
-      e.preventDefault();
       const resp = await fetch(`${import.meta.env.VITE_API_URI}/api/login`, {
         method: "POST",
-        body: JSON.stringify(user),
+        body: JSON.stringify(data),
         headers: {
           "Content-Type": "application/json;charset=UTF-8",
         },
@@ -27,6 +35,7 @@ export const LoginForm = () => {
       } else {
         const user = await resp.json();
         sessionStorage.setItem("token", user.token);
+        reset();
         route("/dashboard");
       }
     } catch (error) {
@@ -41,36 +50,42 @@ export const LoginForm = () => {
   }, [session, route]);
 
   return (
-    <form onSubmit={handleLogin} className='auth-form'>
+    <form onSubmit={handleSubmit(onLogin)} className='auth-form'>
       <h3>Welcome back!</h3>
       <div className='form-group'>
         <label htmlFor='email'>Email</label>
         <input
+          {...register("email")}
           type='email'
-          name='email'
           id='email'
           className='p-2 rounded-md border w-full'
-          value={user.email}
-          onChange={handleChange}
           placeholder='adapam@gmail.com'
-          required
         />
       </div>
+      {errors.email && (
+        <span className='text-red-500'>{errors.email.message}</span>
+      )}
+
       <div className='form-group'>
         <label htmlFor='password'>Password</label>
         <input
+          {...register("password")}
           type='password'
-          name='password'
           id='password'
           className='p-2 rounded-md border w-full'
-          value={user.password}
-          onChange={handleChange}
           placeholder='XXXXXXXXXX'
-          required
         />
       </div>
+      {errors.password && (
+        <span className='text-red-500'>{errors.password.message}</span>
+      )}
+
       <div className='flex flex-col items-center gap-5 md:flex-row md:justify-between'>
-        <button className='btn max-w-fit'>Sign In</button>
+        <button
+          disabled={isSubmitting}
+          className='btn max-w-fit disabled:bg-gray-400'>
+          {isSubmitting ? "Checking" : "Sign In"}
+        </button>
         <Link
           to='/resetpassword'
           className='text-sm text-center block underline'>

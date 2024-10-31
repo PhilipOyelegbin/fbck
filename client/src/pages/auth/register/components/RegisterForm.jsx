@@ -1,29 +1,33 @@
-import { useState } from "react";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import * as yup from "yup";
+
+const schema = yup.object().shape({
+  name: yup.string().required(),
+  email: yup.string().email().required(),
+  gender: yup.string(),
+  phone_number: yup.string().min(11).required(),
+  password: yup.string().min(6).required(),
+});
 
 export const RegisterForm = () => {
   const navigate = useNavigate();
-  const [user, setUser] = useState({
-    name: "",
-    email: "",
-    gender: "",
-    phone_number: "",
-    password: "",
-  });
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm({ mode: "onBlur", resolver: yupResolver(schema) });
 
-  const handleChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
-  };
-
-  const handleRegister = async (e) => {
+  const onRegister = async (data) => {
     try {
-      e.preventDefault();
       const response = await fetch(
         `${import.meta.env.VITE_API_URI}/api/users`,
         {
           method: "POST",
-          body: JSON.stringify(user),
+          body: JSON.stringify(data),
           headers: {
             "Content-Type": "application/json",
           },
@@ -31,13 +35,7 @@ export const RegisterForm = () => {
       );
 
       if (response.ok) {
-        setUser({
-          name: "",
-          email: "",
-          gender: "",
-          phone_number: "",
-          password: "",
-        });
+        reset();
         navigate("/login");
       } else {
         toast.error("An error occurred during registration.");
@@ -48,76 +46,82 @@ export const RegisterForm = () => {
   };
 
   return (
-    <form onSubmit={handleRegister} className='auth-form'>
+    <form onSubmit={handleSubmit(onRegister)} className='auth-form'>
       <h3>Get Started with us!</h3>
       <div className='form-group'>
         <label htmlFor='name'>Name</label>
         <input
+          {...register("name")}
           type='text'
-          name='name'
           id='name'
           className='p-2 rounded-md border w-full'
-          value={user.name}
-          onChange={handleChange}
           placeholder='Ada Pamilerin'
-          required
         />
       </div>
+      {errors.name && (
+        <span className='text-red-500'>{errors.name.message}</span>
+      )}
+
       <div className='form-group'>
         <label htmlFor='email'>Email</label>
         <input
+          {...register("email")}
           type='email'
-          name='email'
           id='email'
           className='p-2 rounded-md border w-full'
-          value={user.email}
-          onChange={handleChange}
           placeholder='adapam@gmail.com'
-          required
         />
       </div>
+      {errors.email && (
+        <span className='text-red-500'>{errors.email.message}</span>
+      )}
+
       <div className='form-group'>
         <label htmlFor='gender'>Gender</label>
         <select
-          name='gender'
+          {...register("gender")}
           id='gender'
-          className='p-2 rounded-md border w-full'
-          value={user.gender}
-          onChange={handleChange}>
+          className='p-2 rounded-md border w-full'>
           <option value=''>[SELECT GENDER]</option>
           <option value='Male'>Male</option>
           <option value='Female'>Female</option>
           <option value='Others'>Others</option>
         </select>
       </div>
+      {errors.gender && (
+        <span className='text-red-500'>{errors.gender.message}</span>
+      )}
+
       <div className='form-group'>
         <label htmlFor='phone_number'>Phone number</label>
         <input
+          {...register("phone_number")}
           type='tel'
-          name='phone_number'
           id='phone_number'
           className='p-2 rounded-md border w-full'
-          value={user.phone_number}
-          onChange={handleChange}
           placeholder='+2348123456789'
-          required
         />
       </div>
+      {errors.phone_number && (
+        <span className='text-red-500'>{errors.phone_number.message}</span>
+      )}
+
       <div className='form-group'>
         <label htmlFor='password'>Password</label>
         <input
+          {...register("password")}
           type='password'
-          name='password'
           id='password'
           className='p-2 rounded-md border w-full'
-          value={user.password}
-          onChange={handleChange}
           placeholder='XXXXXXXXXX'
-          required
         />
       </div>
+      {errors.password && (
+        <span className='text-red-500'>{errors.password.message}</span>
+      )}
+
       <div className='flex gap-2 my-5'>
-        <input type='checkbox' name='terms' id='terms' required />
+        <input type='checkbox' id='terms' required />
         <label htmlFor='terms'>
           Accept our{" "}
           <Link href='/' className='text-purple-500'>
@@ -126,7 +130,9 @@ export const RegisterForm = () => {
         </label>
       </div>
 
-      <button className='btn'>Sign Up</button>
+      <button disabled={isSubmitting} className='btn disabled:bg-gray-400'>
+        {isSubmitting ? "Saving..." : "Sign Up"}
+      </button>
     </form>
   );
 };
