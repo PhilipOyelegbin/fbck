@@ -72,5 +72,6 @@ function scheduleDailyBirthdayCheck(hour, minute) {
   }, timeUntilNextRun);
 }
 
-// Start the daily birthday check at 9 AM
-scheduleDailyBirthdayCheck(9, 0);
+// // Start the daily birthday check at 9 AM
+// scheduleDailyBirthdayCheck(9, 0);
+module.exports = scheduleDailyBirthdayCheck;

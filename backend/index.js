@@ -14,6 +14,7 @@ const voteRoutes = require("./routes/vote.route");
 const mailerRoutes = require("./routes/mailer.route");
 const authRoutes = require("./routes/auth.route");
 const passwordResetRoutes = require("./routes/passwordreset.route");
+const scheduleDailyBirthdayCheck = require("./controller/birthday,controller");
 
 const app = express();
 
@@ -49,6 +50,9 @@ app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerdocs));
 app.all("*", (req, res) => {
   res.status(404).send("Sorry, the route you are going to does not exist");
 });
+
+// automated task to start the daily birthday check at 9 AM
+scheduleDailyBirthdayCheck(9, 0);
 
 // connect the server
 const port = process.env.PORT;

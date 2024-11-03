@@ -45,7 +45,7 @@ function AdminLoginPage() {
   };
 
   return (
-    <article className='h-screen flex justify-center items-center bg-purple-100'>
+    <article className='h-screen px-5 flex justify-center items-center bg-purple-100'>
       <div className='max-w-md w-full p-4 bg-white rounded shadow-md'>
         <h2 className='text-3xl font-bold mb-4'>Admin Login</h2>
 
