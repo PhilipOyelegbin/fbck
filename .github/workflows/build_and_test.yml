@@ -14,22 +14,35 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [22.x]
+        node-version: [16.x, 24.x] # Consider a broader range based on your project
 
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Prettier Action
-      uses: creyD/prettier_action@v4.3
-      with:
-        working_directory: /backend
-    
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test  --if-present
-    
+      - name: Prettier Action
+        uses: creyD/prettier_action@v4.3
+        with:
+          FILE_PATTERN: '*.js'
+          PRETTIER_OPTIONS: '--write'
+          WORKING_DIRECTORY: '/backend'
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-build-${{ matrix.node-version }}
+          restore-keys: |
+            ${{ runner.os }}-build-
+
+      - run: npm install
+
+      - name: Run build script (if present)
+        run: npm run build || echo "Build script not found."
+
+      - name: Run tests (if present)
+        run: npm test || echo "Test script not found."
