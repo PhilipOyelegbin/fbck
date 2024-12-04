@@ -22,7 +22,7 @@ jobs:
     - name: Prettier Action
       uses: creyD/prettier_action@v4.3
       with:
-        working_directory: ./backend
+        working_directory: /backend
     
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
