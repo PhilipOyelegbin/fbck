@@ -26,7 +26,7 @@ jobs:
       - name: Install Dependencies
         run: |
           cd backend
-          mpm i
+          npm i
           npm ci
           cd ../client
           npm i
