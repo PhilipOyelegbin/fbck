@@ -25,16 +25,17 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          cd backend
+          cd ./backend
+          mpm i
           npm ci
           cd ../client
+          npm i
           npm ci
 
       - name: Format Code with Prettier (Backend)
-        uses: prettier/action@v3
+        uses: EPMatt/reviewdog-action-prettier@v1.0.0
         with:
-          args: --write .
-          working-directory: ./backend
+          workdir: ./backend
 
       - name: Lint Code with ESLint (Backend)
         run: |
