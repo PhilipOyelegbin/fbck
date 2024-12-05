@@ -32,11 +32,11 @@ jobs:
           cd ../frontend
           npm ci
 
-      - name: Format Code with Prettier (Backend)
-        uses: prettier/action@v3
-        with:
-          args: --write .
-          working-directory: ./backend
+      # - name: Format Code with Prettier (Backend)
+      #   uses: prettier/action@v3
+      #   with:
+      #     args: --write .
+      #     working-directory: ./backend
 
       - name: Lint Code with ESLint (Backend)
         run: |
