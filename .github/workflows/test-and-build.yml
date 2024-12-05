@@ -37,6 +37,11 @@ jobs:
         with:
           workdir: |
             cd backend
+
+      - name: Format Code with Prettier (Frontend)
+        uses: EPMatt/reviewdog-action-prettier@v1.0.0
+        with:
+          workdir: |
             cd ../client
 
       - name: Lint Code with ESLint (Backend)
