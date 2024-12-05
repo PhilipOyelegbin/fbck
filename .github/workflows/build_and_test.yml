@@ -29,7 +29,7 @@ jobs:
         run: |
           cd backend
           npm ci
-          cd ../frontend
+          cd ../client
           npm ci
 
       # - name: Format Code with Prettier (Backend)
@@ -53,7 +53,7 @@ jobs:
           cd backend
           npm run build
 
-      - name: Build the Frontend Application
+      - name: Build the Client Application
         run: |
-          cd frontend
+          cd client
           npm run build
