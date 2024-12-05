@@ -35,7 +35,9 @@ jobs:
       - name: Format Code with Prettier (Backend)
         uses: EPMatt/reviewdog-action-prettier@v1.0.0
         with:
-          workdir: ./backend
+          workdir: |
+            cd backend
+            cd ../client
 
       - name: Lint Code with ESLint (Backend)
         run: |
