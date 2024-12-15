@@ -28,14 +28,17 @@ const CandidatesPage = () => {
   const handleVote = async (userId, candidateId) => {
     try {
       const voteData = { userId, candidateId };
-      const response = await fetch(`${import.meta.env.VITE_API_URI}/api/vote`, {
-        method: "POST",
-        body: JSON.stringify(voteData),
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${sessionStorage.getItem("token")}`,
-        },
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URI}/api/v1/vote`,
+        {
+          method: "POST",
+          body: JSON.stringify(voteData),
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+          },
+        }
+      );
       if (response.ok) {
         toast.success("Vote recorded successfully");
       } else {
@@ -50,7 +53,7 @@ const CandidatesPage = () => {
     const fetchCandidateData = async () => {
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_API_URI}/api/candidate`,
+          `${import.meta.env.VITE_API_URI}/api/v1/candidate`,
           {
             headers: {
               Authorization: `Bearer ${sessionStorage.getItem("token")}`,

@@ -19,7 +19,7 @@ export default function UpdateCandidate() {
   const handleSave = (e) => {
     e.preventDefault();
     try {
-      fetch(`${import.meta.env.VITE_API_URI}/api/candidate/${id}`, {
+      fetch(`${import.meta.env.VITE_API_URI}/api/v1/candidate/${id}`, {
         method: "PATCH",
         body: JSON.stringify(data),
         headers: {
@@ -41,7 +41,7 @@ export default function UpdateCandidate() {
   };
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URI}/api/candidate/${id}`, {
+    fetch(`${import.meta.env.VITE_API_URI}/api/v1/candidate/${id}`, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     })
       .then((resp) => resp.json())

@@ -15,7 +15,7 @@ export const UpdatePassword = () => {
     try {
       e.preventDefault();
       const response = await fetch(
-        `${import.meta.env.VITE_API_URI}/api/users/${authUser}`,
+        `${import.meta.env.VITE_API_URI}/api/v1/users/${authUser}`,
         {
           method: "PATCH",
           body: JSON.stringify(user),

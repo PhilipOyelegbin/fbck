@@ -12,7 +12,7 @@ function UserPage() {
   const handleDeleteUser = async (email) => {
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URI}/api/users/${email}`,
+        `${import.meta.env.VITE_API_URI}/api/v1/users/${email}`,
         {
           method: "DELETE",
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },

@@ -1,6 +1,6 @@
 export const getUser = async () => {
   try {
-    const user = await fetch(`${import.meta.env.VITE_API_URI}/api/users`, {
+    const user = await fetch(`${import.meta.env.VITE_API_URI}/api/v1/users`, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     });
     return user;
@@ -11,7 +11,7 @@ export const getUser = async () => {
 
 export const getVote = async () => {
   try {
-    const votes = await fetch(`${import.meta.env.VITE_API_URI}/api/vote`, {
+    const votes = await fetch(`${import.meta.env.VITE_API_URI}/api/v1/vote`, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     });
     return votes;
@@ -23,7 +23,7 @@ export const getVote = async () => {
 export const getCandidate = async () => {
   try {
     const candidates = await fetch(
-      `${import.meta.env.VITE_API_URI}/api/candidate`,
+      `${import.meta.env.VITE_API_URI}/api/v1/candidate`,
       {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       }

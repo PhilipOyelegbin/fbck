@@ -20,7 +20,7 @@ export default function UpdateUser() {
   const handleSave = (e) => {
     e.preventDefault();
     try {
-      fetch(`${import.meta.env.VITE_API_URI}/api/users/${email}`, {
+      fetch(`${import.meta.env.VITE_API_URI}/api/v1/users/${email}`, {
         method: "PATCH",
         body: JSON.stringify(data),
         headers: {
@@ -42,7 +42,7 @@ export default function UpdateUser() {
   };
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URI}/api/users/${email}`, {
+    fetch(`${import.meta.env.VITE_API_URI}/api/v1/users/${email}`, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     })
       .then((resp) => resp.json())

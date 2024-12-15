@@ -17,7 +17,7 @@ export default function CreateAdmin() {
     e.preventDefault();
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URI}/api/admin`,
+        `${import.meta.env.VITE_API_URI}/api/v1/admin`,
         {
           method: "POST",
           body: JSON.stringify(data),

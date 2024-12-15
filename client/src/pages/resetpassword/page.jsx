@@ -8,7 +8,7 @@ const ForgotPassword = () => {
   const handleSend = async (e) => {
     e.preventDefault();
     try {
-      await fetch(`${import.meta.env.VITE_API_URI}/api/forgotpassword`, {
+      await fetch(`${import.meta.env.VITE_API_URI}/api/v1/forgotpassword`, {
         method: "PATCH",
         body: JSON.stringify(formInput),
         headers: { "Content-Type": "application/json;charset=UTF-8" },

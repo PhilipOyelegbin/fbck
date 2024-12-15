@@ -56,7 +56,7 @@ export default function BarChart() {
     const fetchData = async () => {
       try {
         const candidateResponse = await fetch(
-          `${import.meta.env.VITE_API_URI}/api/candidate`,
+          `${import.meta.env.VITE_API_URI}/api/v1/candidate`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,

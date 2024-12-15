@@ -17,7 +17,7 @@ export const User = () => {
       e.preventDefault();
       const storedUser = localStorage?.getItem("user");
       const response = await fetch(
-        `${import.meta.env.VITE_API_URI}/api/admin/${storedUser}`,
+        `${import.meta.env.VITE_API_URI}/api/v1/admin/${storedUser}`,
         {
           method: "PATCH",
           body: JSON.stringify(user),
@@ -40,7 +40,7 @@ export const User = () => {
 
   useEffect(() => {
     const storedUser = localStorage?.getItem("user");
-    fetch(`${import.meta.env.VITE_API_URI}/api/admin/${storedUser}`, {
+    fetch(`${import.meta.env.VITE_API_URI}/api/v1/admin/${storedUser}`, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     })
       .then((resp) => resp.json())

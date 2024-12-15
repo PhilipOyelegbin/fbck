@@ -14,12 +14,12 @@ export default function Datapool() {
       setLoading(true);
       try {
         const [votingResponse, candidateResponse] = await Promise.all([
-          fetch(`${import.meta.env.VITE_API_URI}/api/vote`, {
+          fetch(`${import.meta.env.VITE_API_URI}/api/v1/vote`, {
             headers: {
               Authorization: `Bearer ${sessionStorage.getItem("token")}`,
             },
           }),
-          fetch(`${import.meta.env.VITE_API_URI}/api/candidate`, {
+          fetch(`${import.meta.env.VITE_API_URI}/api/v1/candidate`, {
             headers: {
               Authorization: `Bearer ${sessionStorage.getItem("token")}`,
             },

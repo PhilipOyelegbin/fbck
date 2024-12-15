@@ -11,7 +11,7 @@ const ResetPassword = () => {
     e.preventDefault();
     try {
       await fetch(
-        `${import.meta.env.VITE_API_URI}/api/resetpassword/${token}`,
+        `${import.meta.env.VITE_API_URI}/api/v1/resetpassword/${token}`,
         {
           method: "PATCH",
           body: JSON.stringify(formInput),

@@ -12,7 +12,7 @@ function CandidatePage() {
   const handleDeleteCandidate = async (id) => {
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URI}/api/candidate/${id}`,
+        `${import.meta.env.VITE_API_URI}/api/v1/candidate/${id}`,
         {
           method: "DELETE",
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },

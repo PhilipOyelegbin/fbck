@@ -10,10 +10,13 @@ function AdminInvoicePage() {
 
   const handleDeleteAllVote = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URI}/api/vote`, {
-        method: "DELETE",
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URI}/api/v1/vote`,
+        {
+          method: "DELETE",
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        }
+      );
       if (response.ok) {
         toast.success("All vote deleted Successfully");
         setData(!data);
@@ -28,7 +31,7 @@ function AdminInvoicePage() {
   const handleDeleteVoteById = async (id) => {
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URI}/api/vote/${id}`,
+        `${import.meta.env.VITE_API_URI}/api/v1/vote/${id}`,
         {
           method: "DELETE",
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },

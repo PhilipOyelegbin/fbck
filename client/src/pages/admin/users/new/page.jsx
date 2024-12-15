@@ -19,7 +19,7 @@ export default function CreateUser() {
   const handleSave = (e) => {
     e.preventDefault();
     try {
-      fetch(`${import.meta.env.VITE_API_URI}/api/users`, {
+      fetch(`${import.meta.env.VITE_API_URI}/api/v1/users`, {
         method: "POST",
         body: JSON.stringify(data),
         headers: {

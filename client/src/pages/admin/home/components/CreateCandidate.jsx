@@ -17,7 +17,7 @@ export default function CreateCandidate() {
   const handleSave = async (e) => {
     e.preventDefault();
     try {
-      await fetch(`${import.meta.env.VITE_API_URI}/api/candidate`, {
+      await fetch(`${import.meta.env.VITE_API_URI}/api/v1/candidate`, {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
