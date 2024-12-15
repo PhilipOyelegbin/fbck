@@ -22,7 +22,7 @@ export const LoginForm = () => {
 
   const onLogin = async (data) => {
     try {
-      const resp = await fetch(`${import.meta.env.VITE_API_URI}/api/login`, {
+      const resp = await fetch(`${import.meta.env.VITE_API_URI}api/v1/login`, {
         method: "POST",
         body: JSON.stringify(data),
         headers: {

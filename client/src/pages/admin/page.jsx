@@ -21,7 +21,7 @@ function AdminLoginPage() {
 
   const onLogin = async (data) => {
     try {
-      const resp = await fetch(`${import.meta.env.VITE_API_URI}/api/auth`, {
+      const resp = await fetch(`${import.meta.env.VITE_API_URI}/api/v1/auth`, {
         method: "POST",
         body: JSON.stringify(data),
         headers: {

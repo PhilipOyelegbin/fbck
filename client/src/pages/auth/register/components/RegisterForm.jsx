@@ -24,7 +24,7 @@ export const RegisterForm = () => {
   const onRegister = async (data) => {
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URI}/api/users`,
+        `${import.meta.env.VITE_API_URI}/api/v1/users`,
         {
           method: "POST",
           body: JSON.stringify(data),
