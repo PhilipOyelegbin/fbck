@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 function ContactForm() {
   const [data, setData] = useState({

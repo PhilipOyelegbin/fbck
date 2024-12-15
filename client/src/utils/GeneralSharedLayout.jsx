@@ -9,7 +9,7 @@ const GeneralSharedLayout = () => {
       <Outlet />
       <Footer />
       <ScrollRestoration
-        getKey={(location, matches) => {
+        getKey={(location) => {
           return location.pathname;
         }}
       />

@@ -23,7 +23,7 @@ const ForgotPassword = () => {
         })
         .catch((err) => setErrorMsg(err));
     } catch (error) {
-      setErrorMsg("An unexpected error occurred. Please try again.");
+      error && setErrorMsg("An unexpected error occurred. Please try again.");
     }
   };
 

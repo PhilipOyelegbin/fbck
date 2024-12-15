@@ -16,7 +16,7 @@ const GeneralSharedLayout = () => {
         </div>
       </div>
       <ScrollRestoration
-        getKey={(location, matches) => {
+        getKey={(location) => {
           return location.pathname;
         }}
       />

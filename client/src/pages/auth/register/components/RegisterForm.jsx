@@ -41,7 +41,7 @@ export const RegisterForm = () => {
         toast.error("An error occurred during registration.");
       }
     } catch (error) {
-      toast.error("Registration failed!");
+      error && toast.error("Registration failed!");
     }
   };
 

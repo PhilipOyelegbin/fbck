@@ -7,7 +7,7 @@ const GeneralSharedLayout = () => {
       <Navbar />
       <Outlet />
       <ScrollRestoration
-        getKey={(location, matches) => {
+        getKey={(location) => {
           return location.pathname;
         }}
       />

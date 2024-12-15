@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
@@ -39,7 +39,7 @@ export const LoginForm = () => {
         route("/dashboard");
       }
     } catch (error) {
-      toast.error("An unexpected error occurred. Please try again.");
+      error && toast.error("An unexpected error occurred. Please try again.");
     }
   };
 
