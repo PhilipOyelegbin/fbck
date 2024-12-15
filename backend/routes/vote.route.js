@@ -11,7 +11,7 @@ const { prisma } = require("../utils/connect");
 
 const router = Router();
 
-router.post("/v1/api/vote", authenticated, async (req, res) => {
+router.post("/api/v1/vote", authenticated, async (req, res) => {
   /*
       #swagger.tags = ['Vote']
       #swagger.security = [{"bearerAuth": []}]
@@ -36,7 +36,7 @@ router.post("/v1/api/vote", authenticated, async (req, res) => {
   }
 });
 
-router.get("/v1/api/vote", authenticated, async (req, res) => {
+router.get("/api/v1/vote", authenticated, async (req, res) => {
   // #swagger.tags = ['Vote']
   try {
     const vote = await getVotes();
@@ -46,7 +46,7 @@ router.get("/v1/api/vote", authenticated, async (req, res) => {
   }
 });
 
-router.get("/v1/api/vote/:id", authenticated, async (req, res) => {
+router.get("/api/v1/vote/:id", authenticated, async (req, res) => {
   // #swagger.tags = ['Vote']
   try {
     const { id } = req.params;
@@ -66,7 +66,7 @@ router.get("/v1/api/vote/:id", authenticated, async (req, res) => {
 });
 
 // router.patch(
-//   "/v1/api/Vote/:id",
+//   "/api/v1/Vote/:id",
 //   authenticated,
 //   authorized("Admin"),
 //   async (req, res) => {
@@ -108,7 +108,7 @@ router.get("/v1/api/vote/:id", authenticated, async (req, res) => {
 // );
 
 router.delete(
-  "/v1/api/vote/:id",
+  "/api/v1/vote/:id",
   authenticated,
   authorized("Admin"),
   async (req, res) => {
@@ -136,7 +136,7 @@ router.delete(
 );
 
 router.delete(
-  "/v1/api/vote",
+  "/api/v1/vote",
   authenticated,
   authorized("Admin"),
   async (req, res) => {

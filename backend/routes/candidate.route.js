@@ -11,7 +11,7 @@ const { authenticated, authorized } = require("../utils/middleware");
 const router = Router();
 
 router.post(
-  "/v1/api/candidate",
+  "/api/v1/candidate",
   authenticated,
   authorized("Admin"),
   async (req, res) => {
@@ -52,7 +52,7 @@ router.post(
   }
 );
 
-router.get("/v1/api/candidate", authenticated, async (req, res) => {
+router.get("/api/v1/candidate", authenticated, async (req, res) => {
   /*
       #swagger.tags = ['Candidate']
       #swagger.security = [{"bearerAuth": []}]
@@ -68,7 +68,7 @@ router.get("/v1/api/candidate", authenticated, async (req, res) => {
   }
 });
 
-router.get("/v1/api/candidate/:id", authenticated, async (req, res) => {
+router.get("/api/v1/candidate/:id", authenticated, async (req, res) => {
   /*
     #swagger.tags = ['Candidate']
     #swagger.security = [{"bearerAuth": []}]
@@ -92,7 +92,7 @@ router.get("/v1/api/candidate/:id", authenticated, async (req, res) => {
 });
 
 router.patch(
-  "/v1/api/candidate/:id",
+  "/api/v1/candidate/:id",
   authenticated,
   authorized("Admin"),
   async (req, res) => {
@@ -136,7 +136,7 @@ router.patch(
 );
 
 router.delete(
-  "/v1/api/candidate/:id",
+  "/api/v1/candidate/:id",
   authenticated,
   authorized("Admin"),
   async (req, res) => {

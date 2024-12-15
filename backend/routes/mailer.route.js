@@ -4,7 +4,7 @@ const { createTransport } = require("nodemailer");
 
 const router = Router();
 
-router.post("/v1/api/servicemail", async (req, res) => {
+router.post("/api/v1/servicemail", async (req, res) => {
   /*
     #swagger.tags = ['Mailer']
     #swagger.security = [{"bearerAuth": []}]
@@ -34,7 +34,7 @@ router.post("/v1/api/servicemail", async (req, res) => {
   }
 });
 
-router.post("/v1/api/supportmail", async (req, res) => {
+router.post("/api/v1/supportmail", async (req, res) => {
   // #swagger.tags = ['Mailer']
   try {
     const { subject, full_name, email, message } = await req.body;

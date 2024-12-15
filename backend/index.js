@@ -33,10 +33,6 @@ app.use(express.json());
 app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: false }));
 
-// Swagger setup
-app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerdocs));
-app.use(helmet());
-
 // User routes
 app.use("/", userRoutes);
 app.use("/", adminRoutes);
@@ -45,6 +41,10 @@ app.use("/", voteRoutes);
 app.use("/", mailerRoutes);
 app.use("/", authRoutes);
 app.use("/", passwordResetRoutes);
+
+// Swagger setup
+app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerdocs));
+app.use(helmet());
 
 // error route
 app.all("*", (req, res) => {

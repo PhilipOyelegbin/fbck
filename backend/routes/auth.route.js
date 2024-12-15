@@ -3,7 +3,7 @@ const { authenticate, adminAuthenticate } = require("../utils/auth");
 
 const router = Router();
 
-router.post("/v1/api/login", async (req, res) => {
+router.post("/api/v1/login", async (req, res) => {
   /*
     #swagger.tags = ['Auth']
   */
@@ -20,7 +20,7 @@ router.post("/v1/api/login", async (req, res) => {
   }
 });
 
-router.post("/v1/api/auth", async (req, res) => {
+router.post("/api/v1/auth", async (req, res) => {
   /*
     #swagger.tags = ['Auth']
   */
@@ -37,7 +37,7 @@ router.post("/v1/api/auth", async (req, res) => {
   }
 });
 
-router.post("/v1/api/logout", (req, res) => {
+router.post("/api/v1/logout", (req, res) => {
   /*
     #swagger.tags = ['Auth']
   */

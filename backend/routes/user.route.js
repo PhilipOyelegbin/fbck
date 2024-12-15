@@ -11,7 +11,7 @@ const { authenticated, authorized } = require("../utils/middleware");
 
 const router = Router();
 
-router.post("/v1/api/users", async (req, res) => {
+router.post("/api/v1/users", async (req, res) => {
   // #swagger.tags = ['Users']
   const { name, email, phone_number, password, gender } = await req.body;
   if (!name || !email || !phone_number || !password) {
@@ -35,7 +35,7 @@ router.post("/v1/api/users", async (req, res) => {
 });
 
 router.get(
-  "/v1/api/users",
+  "/api/v1/users",
   authenticated,
   authorized("Admin"),
   async (req, res) => {
@@ -54,7 +54,7 @@ router.get(
   }
 );
 
-router.get("/v1/api/users/:email", authenticated, async (req, res) => {
+router.get("/api/v1/users/:email", authenticated, async (req, res) => {
   /*
       #swagger.tags = ['Users']
       #swagger.security = [{"bearerAuth": []}]
@@ -77,7 +77,7 @@ router.get("/v1/api/users/:email", authenticated, async (req, res) => {
   }
 });
 
-router.patch("/v1/api/users/:email", authenticated, async (req, res) => {
+router.patch("/api/v1/users/:email", authenticated, async (req, res) => {
   /*
       #swagger.tags = ['Users']
       #swagger.security = [{"bearerAuth": []}]
@@ -120,7 +120,7 @@ router.patch("/v1/api/users/:email", authenticated, async (req, res) => {
 });
 
 router.delete(
-  "/v1/api/users/:email",
+  "/api/v1/users/:email",
   authenticated,
   authorized("Admin"),
   async (req, res) => {

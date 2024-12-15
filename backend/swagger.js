@@ -4,8 +4,8 @@ const swaggerAutogen = require("swagger-autogen")({ openapi: "3.0.0" });
 const doc = {
   info: {
     version: "1.0.0",
-    title: "KodasHub API",
-    description: "API documentation for the KodasHub application",
+    title: "FBCK API",
+    description: "API documentation for the FBCK application",
   },
   servers: [
     {

@@ -8,7 +8,7 @@ const crypto = require("crypto");
 
 const router = Router();
 
-router.patch("/v1/api/forgotpassword", async (req, res) => {
+router.patch("/api/v1/forgotpassword", async (req, res) => {
   // #swagger.tags = ['PasswordReset']
   try {
     const { email } = await req.body;
@@ -70,7 +70,7 @@ router.patch("/v1/api/forgotpassword", async (req, res) => {
   }
 });
 
-router.patch("/v1/api/resetpassword/:token", async (req, res) => {
+router.patch("/api/v1/resetpassword/:token", async (req, res) => {
   // #swagger.tags = ['PasswordReset']
   try {
     const { password } = await req.body;

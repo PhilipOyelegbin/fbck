@@ -12,7 +12,7 @@ const { hashPassword } = require("../utils/auth");
 const router = Router();
 
 router.post(
-  "/v1/api/admin",
+  "/api/v1/admin",
   authenticated,
   authorized("Admin"),
   async (req, res) => {
@@ -52,7 +52,7 @@ router.post(
 );
 
 router.get(
-  "/v1/api/admin",
+  "/api/v1/admin",
   authenticated,
   authorized("Admin"),
   async (req, res) => {
@@ -72,7 +72,7 @@ router.get(
 );
 
 router.get(
-  "/v1/api/admin/:id",
+  "/api/v1/admin/:id",
   authenticated,
   authorized("Admin"),
   async (req, res) => {
@@ -98,7 +98,7 @@ router.get(
 );
 
 router.patch(
-  "/v1/api/admin/:id",
+  "/api/v1/admin/:id",
   authenticated,
   authorized("Admin"),
   async (req, res) => {
@@ -146,7 +146,7 @@ router.patch(
 );
 
 router.delete(
-  "/v1/api/admin/:id",
+  "/api/v1/admin/:id",
   authenticated,
   authorized("Admin"),
   async (req, res) => {

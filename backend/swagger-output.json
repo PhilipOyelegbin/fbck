@@ -2,30 +2,23 @@
   "openapi": "3.0.0",
   "info": {
     "version": "1.0.0",
-    "title": "KodasHub API",
-    "description": "API documentation for the KodasHub application"
+    "title": "FBCK API",
+    "description": "API documentation for the FBCK application"
   },
   "servers": [
     {
+      "url": "http://localhost:4001",
       "description": "Base url of the server"
     }
   ],
   "paths": {
-    "/v1/api/hosting/{email}": {
+    "/api/v1/admin": {
       "post": {
         "tags": [
-          "Hosting"
+          "Admin"
         ],
         "description": "",
         "parameters": [
-          {
-            "name": "email",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
           {
             "name": "authorization",
             "in": "header",
@@ -43,7 +36,7 @@
           {
             "name": "body",
             "in": "body",
-            "description": "Hosting data to be created.",
+            "description": "Admin data to be created.",
             "required": true,
             "schema": {
               "type": "object",
@@ -52,11 +45,11 @@
                   "type": "string",
                   "example": "string"
                 },
-                "price": {
+                "email": {
                   "type": "string",
                   "example": "string"
                 },
-                "url": {
+                "password": {
                   "type": "string",
                   "example": "string"
                 }
@@ -77,9 +70,6 @@
           "403": {
             "description": "Forbidden"
           },
-          "404": {
-            "description": "Not Found"
-          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -98,13 +88,13 @@
                   "name": {
                     "example": "any"
                   },
-                  "price": {
+                  "email": {
                     "example": "any"
                   },
-                  "expiration": {
+                  "password": {
                     "example": "any"
                   },
-                  "url": {
+                  "phone_number": {
                     "example": "any"
                   }
                 }
@@ -112,12 +102,10 @@
             }
           }
         }
-      }
-    },
-    "/v1/api/hosting": {
+      },
       "get": {
         "tags": [
-          "Hosting"
+          "Admin"
         ],
         "description": "",
         "parameters": [
@@ -157,15 +145,15 @@
         ]
       }
     },
-    "/v1/api/hosting/{slug}": {
+    "/api/v1/admin/{id}": {
       "get": {
         "tags": [
-          "Hosting"
+          "Admin"
         ],
         "description": "",
         "parameters": [
           {
-            "name": "slug",
+            "name": "id",
             "in": "path",
             "required": true,
             "schema": {
@@ -209,12 +197,10 @@
             "bearerAuth": []
           }
         ]
-      }
-    },
-    "/v1/api/hosting/{id}": {
+      },
       "patch": {
         "tags": [
-          "Hosting"
+          "Admin"
         ],
         "description": "",
         "parameters": [
@@ -243,7 +229,7 @@
           {
             "name": "body",
             "in": "body",
-            "description": "Hosting data to be updated.",
+            "description": "Admin data to be updated.",
             "required": false,
             "schema": {
               "type": "object",
@@ -252,15 +238,15 @@
                   "type": "string",
                   "example": "string"
                 },
-                "price": {
+                "email": {
                   "type": "string",
                   "example": "string"
                 },
-                "url": {
+                "phone_number": {
                   "type": "string",
                   "example": "string"
                 },
-                "status": {
+                "password": {
                   "type": "string",
                   "example": "string"
                 }
@@ -293,7 +279,7 @@
       },
       "delete": {
         "tags": [
-          "Hosting"
+          "Admin"
         ],
         "description": "",
         "parameters": [
@@ -344,7 +330,7 @@
         ]
       }
     },
-    "/v1/api/login": {
+    "/api/v1/login": {
       "post": {
         "tags": [
           "Auth"
@@ -383,7 +369,46 @@
         }
       }
     },
-    "/v1/api/logout": {
+    "/api/v1/auth": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "example": "any"
+                  },
+                  "password": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/logout": {
       "post": {
         "tags": [
           "Auth"
@@ -399,21 +424,13 @@
         }
       }
     },
-    "/v1/api/invoice/{email}": {
+    "/api/v1/candidate": {
       "post": {
         "tags": [
-          "Invoice"
+          "Candidate"
         ],
         "description": "",
         "parameters": [
-          {
-            "name": "email",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
           {
             "name": "authorization",
             "in": "header",
@@ -431,7 +448,7 @@
           {
             "name": "body",
             "in": "body",
-            "description": "Invoice data to be created.",
+            "description": "Candidate data to be created.",
             "required": true,
             "schema": {
               "type": "object",
@@ -440,7 +457,15 @@
                   "type": "string",
                   "example": "string"
                 },
-                "price": {
+                "gender": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "image_url": {
                   "type": "string",
                   "example": "string"
                 }
@@ -461,9 +486,6 @@
           "403": {
             "description": "Forbidden"
           },
-          "404": {
-            "description": "Not Found"
-          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -482,7 +504,13 @@
                   "name": {
                     "example": "any"
                   },
-                  "price": {
+                  "gender": {
+                    "example": "any"
+                  },
+                  "description": {
+                    "example": "any"
+                  },
+                  "image_url": {
                     "example": "any"
                   }
                 }
@@ -490,12 +518,10 @@
             }
           }
         }
-      }
-    },
-    "/v1/api/invoice": {
+      },
       "get": {
         "tags": [
-          "Invoice"
+          "Candidate"
         ],
         "description": "",
         "parameters": [
@@ -521,9 +547,6 @@
           "401": {
             "description": "Unauthorized"
           },
-          "403": {
-            "description": "Forbidden"
-          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -535,15 +558,15 @@
         ]
       }
     },
-    "/v1/api/invoice/{slug}": {
+    "/api/v1/candidate/{id}": {
       "get": {
         "tags": [
-          "Invoice"
+          "Candidate"
         ],
         "description": "",
         "parameters": [
           {
-            "name": "slug",
+            "name": "id",
             "in": "path",
             "required": true,
             "schema": {
@@ -587,12 +610,10 @@
             "bearerAuth": []
           }
         ]
-      }
-    },
-    "/v1/api/invoice/{id}": {
+      },
       "patch": {
         "tags": [
-          "Invoice"
+          "Candidate"
         ],
         "description": "",
         "parameters": [
@@ -621,7 +642,7 @@
           {
             "name": "body",
             "in": "body",
-            "description": "Invoice data to be updated.",
+            "description": "Candidate data to be updated.",
             "required": false,
             "schema": {
               "type": "object",
@@ -630,13 +651,17 @@
                   "type": "string",
                   "example": "string"
                 },
-                "price": {
-                  "type": "number",
-                  "example": 0
+                "gender": {
+                  "type": "string",
+                  "example": "string"
                 },
-                "status": {
-                  "type": "boolean",
-                  "example": false
+                "description": {
+                  "type": "string",
+                  "example": "string"
+                },
+                "image_url": {
+                  "type": "string",
+                  "example": "string"
                 }
               }
             }
@@ -663,28 +688,11 @@
           {
             "bearerAuth": []
           }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "status": {
-                    "example": "any"
-                  },
-                  "body": {
-                    "example": "any"
-                  }
-                }
-              }
-            }
-          }
-        }
+        ]
       },
       "delete": {
         "tags": [
-          "Invoice"
+          "Candidate"
         ],
         "description": "",
         "parameters": [
@@ -735,34 +743,15 @@
         ]
       }
     },
-    "/v1/api/servicemail": {
+    "/api/v1/servicemail": {
       "post": {
         "tags": [
           "Mailer"
         ],
         "description": "",
-        "parameters": [
-          {
-            "name": "authorization",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Authorization",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "401": {
-            "description": "Unauthorized"
           },
           "500": {
             "description": "Internal Server Error"
@@ -795,7 +784,7 @@
         }
       }
     },
-    "/v1/api/supportmail": {
+    "/api/v1/supportmail": {
       "post": {
         "tags": [
           "Mailer"
@@ -834,7 +823,7 @@
         }
       }
     },
-    "/v1/api/forgotpassword": {
+    "/api/v1/forgotpassword": {
       "patch": {
         "tags": [
           "PasswordReset"
@@ -870,7 +859,7 @@
         }
       }
     },
-    "/v1/api/resetpassword/{token}": {
+    "/api/v1/resetpassword/{token}": {
       "patch": {
         "tags": [
           "PasswordReset"
@@ -913,7 +902,7 @@
         }
       }
     },
-    "/v1/api/users": {
+    "/api/v1/users": {
       "post": {
         "tags": [
           "Users"
@@ -947,6 +936,9 @@
                   },
                   "password": {
                     "example": "any"
+                  },
+                  "gender": {
+                    "example": "any"
                   }
                 }
               }
@@ -959,9 +951,31 @@
           "Users"
         ],
         "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
           },
           "500": {
             "description": "Internal Server Error"
@@ -974,7 +988,7 @@
         ]
       }
     },
-    "/v1/api/users/{email}": {
+    "/api/v1/users/{email}": {
       "get": {
         "tags": [
           "Users"
@@ -988,11 +1002,28 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "403": {
             "description": "Forbidden"
@@ -1025,6 +1056,20 @@
             }
           },
           {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "body",
             "in": "body",
             "description": "User data to be updated.",
@@ -1044,6 +1089,10 @@
                   "type": "string",
                   "example": "string"
                 },
+                "gender": {
+                  "type": "string",
+                  "example": "string"
+                },
                 "password": {
                   "type": "string",
                   "example": "string"
@@ -1055,6 +1104,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "403": {
             "description": "Forbidden"
@@ -1085,11 +1137,28 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "403": {
             "description": "Forbidden"
@@ -1108,7 +1177,7 @@
         ]
       }
     },
-    "/v1/api/Vote": {
+    "/api/v1/vote": {
       "post": {
         "tags": [
           "Vote"
@@ -1140,9 +1209,6 @@
           "401": {
             "description": "Unauthorized"
           },
-          "403": {
-            "description": "Forbidden"
-          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -1158,16 +1224,10 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "plan": {
+                  "userId": {
                     "example": "any"
                   },
-                  "description": {
-                    "example": "any"
-                  },
-                  "amount": {
-                    "example": "any"
-                  },
-                  "features": {
+                  "candidateId": {
                     "example": "any"
                   }
                 }
@@ -1181,17 +1241,77 @@
           "Vote"
         ],
         "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "500": {
             "description": "Internal Server Error"
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Vote"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     },
-    "/v1/api/Vote/{id}": {
+    "/api/v1/vote/{id}": {
       "get": {
         "tags": [
           "Vote"
@@ -1205,11 +1325,28 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "403": {
             "description": "Forbidden"
