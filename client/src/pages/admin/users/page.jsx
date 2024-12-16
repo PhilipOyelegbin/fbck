@@ -5,6 +5,20 @@ import { getUser } from "../components/action";
 import Loading from "../../../components/loading";
 import { Link } from "react-router-dom";
 
+function hideYear(dateString) {
+  // Split the date string by "/"
+  const dateParts = dateString?.split("/");
+
+  // Extract the month and day parts
+  const month = dateParts[1];
+  const day = dateParts[2];
+
+  // Format the date without the year
+  const formattedDate = `${month}/${day}`;
+
+  return formattedDate;
+}
+
 function UserPage() {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
@@ -82,7 +96,9 @@ function UserPage() {
                 <tr key={item.id} className='text-sm hover:bg-gray-100'>
                   <td className='py-1 px-2 border-b'>{item.name}</td>
                   <td className='py-1 px-2 border-b'>{item.email}</td>
-                  <td className='py-1 px-2 border-b'>{item.date_of_birth}</td>
+                  <td className='py-1 px-2 border-b'>
+                    {item.date_of_birth ? hideYear(item.date_of_birth) : "N/A"}
+                  </td>
                   <td className='py-1 px-2 border-b'>
                     <div className='flex gap-2 text-xl'>
                       <Link
