@@ -17,7 +17,7 @@ const data = [
 
 function TeamSection() {
   return (
-    <section className='px-5 lg:px-20 py-14 bg-blue-500 text-white rounded-tr-[60px] rounded-bl-[60px]'>
+    <section className='px-5 md:px-20 py-14 bg-blue-500 text-white rounded-tr-[60px] rounded-bl-[60px]'>
       <div className='relative max-w-xl mx-auto sm:text-center'>
         <h3 className='text-3xl font-semibold sm:text-4xl'>
           Our Pastorial Team

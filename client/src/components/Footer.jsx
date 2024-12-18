@@ -35,7 +35,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className='bg-gray-200 p-5 lg:px-20'>
+    <footer className='bg-gray-200 p-5 md:px-20'>
       <div className='flex flex-wrap justify-between'>
         <div className='w-full md:w-1/2 lg:w-1/3 xl:w-1/4 mb-4 md:mb-0'>
           <img

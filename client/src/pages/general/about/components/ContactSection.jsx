@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function ContactSection() {
   return (
-    <section className='px-5 lg:px-20 py-14 flex flex-col md:flex-row gap-5 items-center'>
+    <section className='px-5 md:px-20 py-14 flex flex-col md:flex-row gap-5 items-center'>
       <div
         className='flex-1 space-y-5'
         data-aos='fade-in'
