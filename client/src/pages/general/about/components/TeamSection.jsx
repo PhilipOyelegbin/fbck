@@ -1,9 +1,10 @@
+import olatunde from "../../../../assets/olatunde.jpg";
 import male from "../../../../assets/male.jpg";
 import female from "../../../../assets/female.jpg";
 
 const data = [
   {
-    avatar: male,
+    avatar: olatunde,
     name: "Rev. Dr. Festus I. Olatunde",
     position: "Senior Pastor",
   },
@@ -28,9 +29,13 @@ function TeamSection() {
           <figure
             key={idx}
             className='relative flex-1 flex items-stretch text-center flex-col rounded-xl'>
-            <img src={item.avatar} className='rounded-xl' alt={item.position} />
+            <img
+              src={item.avatar}
+              className='rounded-xl h-[250px] md:h-[400px]'
+              alt={item.position}
+            />
             <figcaption className='p-3'>
-              <h5>{item.name}</h5>
+              <h5 className='font-medium'>{item.name}</h5>
               <p>{item.position}</p>
             </figcaption>
           </figure>
