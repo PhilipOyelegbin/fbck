@@ -14,6 +14,7 @@ import AuthLayout from "./utils/AuthSharedLayout";
 import DashboardLayout from "./utils/DashboardSharedLayout";
 import AdminLayout from "./utils/AdminSharedLayout";
 import Loader from "./components/loading";
+import ScrollToTop from "./components/ScrollToTop";
 
 // general routes
 const Home = lazy(() => import("./pages/general/home/page"));
@@ -101,6 +102,7 @@ function App() {
         draggable
         pauseOnHover
       />
+      <ScrollToTop />
     </Suspense>
   );
 }

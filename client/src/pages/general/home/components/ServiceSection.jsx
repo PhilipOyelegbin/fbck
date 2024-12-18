@@ -20,6 +20,9 @@ function ServiceSecton() {
         {data?.map((list, idx) => (
           <div
             key={idx}
+            data-aos='fade-in'
+            data-aos-easing='ease-in-sine'
+            data-aos-duration='1500'
             className='relative text-center space-y-2 flex-1 flex items-stretch flex-col rounded-xl'>
             <img
               className='w-full aspect-square rounded-xl'

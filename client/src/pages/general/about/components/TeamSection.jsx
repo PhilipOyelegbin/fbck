@@ -28,6 +28,9 @@ function TeamSection() {
         {data?.map((item, idx) => (
           <figure
             key={idx}
+            data-aos='fade-in'
+            data-aos-easing='ease-in-sine'
+            data-aos-duration='1500'
             className='relative flex-1 flex items-stretch text-center flex-col rounded-xl'>
             <img
               src={item.avatar}
