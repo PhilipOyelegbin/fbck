@@ -27,16 +27,20 @@ export default function Navbar() {
           toggleMenu ? "right-0" : "-right-full"
         } fixed z-20 bg-white md:bg-transparent md:static top-0 p-5 flex flex-col md:flex-row items-start gap-3 w-full md:items-center md:w-auto ease-in-out duration-300`}>
         {menu.map((item) => (
-          <NavLink
+          <li
             key={item.url}
-            to={item.url}
-            className={`${({ isActive }) =>
-              isActive
-                ? "text-blue-500"
-                : "text-slate-700"} flex gap-3 items-center py-2 px-3 text-[18px] cursor-pointer hover:text-blue-500 ease-in-out duration-300 rounded-md`}
-            onClick={() => setToggleMenu(!toggleMenu)}>
-            {item.label}
-          </NavLink>
+            className='py-2 px-3 text-[18px] flex gap-3 items-center'>
+            <NavLink
+              className={({ isActive }) =>
+                isActive
+                  ? "text-blue-700"
+                  : "hover:text-blue-500 ease-linear duration-300"
+              }
+              to={item.url}
+              onClick={() => setToggleMenu(!toggleMenu)}>
+              {item.label}
+            </NavLink>
+          </li>
         ))}
         <Link to='/login' className='btn max-w-fit'>
           Go To Ballot
