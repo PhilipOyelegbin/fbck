@@ -58,8 +58,7 @@ jobs:
 
       - name: Authenticate to GKE
         run: |
-          echo "${{ env.GCP_SA_KEY }}" > /tmp/gcp_sa_key.json
-          gcloud auth activate-service-account --key-file=/tmp/gcp_sa_key.json
+          echo "${{ env.GCP_SA_KEY }}" | gcloud auth activate-service-account --key-file=-
           gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --region ${{ env.CLUSTER_REGION }} --project ${{ env.GCP_PROJECT_ID }}
 
       - name: Deploy backend application
