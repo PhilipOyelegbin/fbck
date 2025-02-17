@@ -4,15 +4,6 @@ FROM node:18 AS builder
 # Set the working directory
 WORKDIR .
 
-# Copy package.json first (to leverage Docker cache)
-COPY package.json .
-
-# Install dependencies
-RUN npm install
-
-# Copy the rest of the app’s files
-COPY . .
-
 # environment variables
 ENV VITE_API_URI={VITE_API_URI}
 ENV VITE_SSP={VITE_SSP}
@@ -26,6 +17,15 @@ ENV SMTP_HOST={SMTP_HOST}
 ENV SMTP_USER={SMTP_USER}
 ENV SMTP_PASSWORD={SMTP_PASSWORD}
 ENV SMTP_PORT={SMTP_PORT}
+
+# Copy package.json first (to leverage Docker cache)
+COPY package.json .
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the app’s files
+COPY . .
 
 # Build the frontend app
 RUN npm run build

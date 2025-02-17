@@ -4,14 +4,9 @@ FROM node:18 AS builder
 # Set the working directory
 WORKDIR .
 
-# Copy package.json first (to leverage Docker cache)
-COPY package.json .
-
-# Copy the rest of the app’s files
-COPY . .
-
 # environment variables
-ENV DATABASE_URL={DATABASE_URL}
+ARG DATABASE_URL
+ENV DATABASE_URL=${DATABASE_URL}
 ENV SEED_ADMIN_NAME={SEED_ADMIN_NAME}
 ENV SEED_ADMIN_EMAIL={SEED_ADMIN_EMAIL}
 ENV SEED_ADMIN_PASSWORD={SEED_ADMIN_PASSWORD}
@@ -24,6 +19,12 @@ ENV SMTP_USER={SMTP_USER}
 ENV SMTP_PASSWORD={SMTP_PASSWORD}
 ENV SMTP_PORT={SMTP_PORT}
 
+# Copy package.json first (to leverage Docker cache)
+COPY package.json .
+
+# Copy the rest of the app’s files
+COPY . .
+
 # Install dependencies
 RUN npm install
 
@@ -31,13 +32,8 @@ RUN npm install
 RUN npx prisma generate
 RUN npx prisma migrate deploy
 
-# Create entrypoint script
-# RUN echo "#!/bin/sh\nnpx prisma db seed && npm start" > /entrypoint.sh
-# RUN chmod +x /entrypoint.sh
-
 # Expose the port express serves the api on
 EXPOSE 4001
 
 # Run the entrypoint script
-#CMD ["/entrypoint.sh"]
 CMD ["npm", "start"]
