@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: client-app
+  template:
+    metadata:
+      labels:
+        app: client-app
+    spec:
+      containers:
+        - name: client
+          image: your-dockerhub-username/client-app:latest # Replace with your client image name
+          ports:
+            - containerPort: 3000
+          env:
+            - name: API_URL
+              value: "http://backend-service:80"

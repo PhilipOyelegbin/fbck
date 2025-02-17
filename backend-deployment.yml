@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: backend-app
+  template:
+    metadata:
+      labels:
+        app: backend-app
+    spec:
+      containers:
+        - name: backend
+          image: your-dockerhub-username/backend-app:latest # Replace with your backend image name
+          ports:
+            - containerPort: 5000
+          env:
+            - name: DB_HOST
+              value: "your-database-host"
+            - name: DB_USER
+              value: "your-database-user"
+            - name: DB_PASSWORD
+              value: "your-database-password"
