@@ -29,7 +29,7 @@ RUN npm install
 
 # Create the primsa schema and migration
 RUN npx prisma generate
-RUN npx prisma migrate deploy
+RUN DATABASE_URL={DATABASE_URL} npx prisma migrate deploy
 
 # Create entrypoint script
 # RUN echo "#!/bin/sh\nnpx prisma db seed && npm start" > /entrypoint.sh

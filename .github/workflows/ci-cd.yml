@@ -34,7 +34,6 @@ jobs:
       - name: Build and push backend image
         run: |
           cd backend
-          echo ${{ secrets.DATABASE_URL }}
           docker build -t ${{ env.BACKEND_IMAGE }}:latest .
           docker push ${{ env.BACKEND_IMAGE }}:latest
 
