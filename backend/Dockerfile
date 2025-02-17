@@ -11,7 +11,7 @@ COPY package.json .
 COPY . .
 
 # environment variables
-ENV DATABASE_URL={DATABASE_URL}
+ENV DATABASE_URL={DATABASE_URL} || postgresql://postgres:1234@localhost:5432/fbckdb?schema=public
 ENV SEED_ADMIN_NAME={SEED_ADMIN_NAME}
 ENV SEED_ADMIN_EMAIL={SEED_ADMIN_EMAIL}
 ENV SEED_ADMIN_PASSWORD={SEED_ADMIN_PASSWORD}
@@ -29,7 +29,7 @@ RUN npm install
 
 # Create the primsa schema and migration
 RUN npx prisma generate
-RUN DATABASE_URL={DATABASE_URL} npx prisma migrate deploy
+RUN npx prisma migrate deploy
 
 # Create entrypoint script
 # RUN echo "#!/bin/sh\nnpx prisma db seed && npm start" > /entrypoint.sh
