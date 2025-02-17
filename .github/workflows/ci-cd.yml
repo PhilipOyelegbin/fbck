@@ -58,7 +58,7 @@ jobs:
 
       - name: Authenticate to GKE
         run: |
-          echo "${{ secrets.GCP_SA_KEY }}" > sa-key.json
+          echo '${{ secrets.GCP_SA_KEY }}' > sa-key.json
           gcloud auth activate-service-account --key-file=sa-key.json
           gcloud container clusters get-credentials ${{ env.CLUSTER_NAME }} --region ${{ env.CLUSTER_REGION }} --project ${{ env.GCP_PROJECT_ID }}
 
@@ -74,4 +74,4 @@ jobs:
 
       - name: Debug GCP_SA_KEY
         run: |
-          echo "${{ secrets.GCP_SA_KEY }}"
+          echo '${{ secrets.GCP_SA_KEY }}'
